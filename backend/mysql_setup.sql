@@ -8,10 +8,9 @@ USE db;
  
 -- create user table in db
 CREATE TABLE `db`.`User` (
-   `user_id` INT NOT NULL AUTO_INCREMENT,
+   `email` VARCHAR(255),
    `name` VARCHAR(255),
    `dob` DATE,
-   `email` VARCHAR(255),
    `password` VARCHAR(255),
    `company` VARCHAR(255),
    `phone_number` VARCHAR(15),
@@ -22,8 +21,7 @@ CREATE TABLE `db`.`User` (
    `tagged_user` BOOLEAN,
    `is_host` BOOLEAN,
  
-   PRIMARY KEY (`user_id`),
-   UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC) VISIBLE
+   PRIMARY KEY (`email`)
 );
  
 LOAD DATA INFILE 'Example_Users_Data.txt' 
