@@ -7,7 +7,7 @@ CREATE DATABASE IF NOT EXISTS db;
 USE db;
  
 -- create user table in db
-CREATE TABLE `db`.`user` (
+CREATE TABLE `db`.`User` (
    `user_id` INT NOT NULL AUTO_INCREMENT,
    `role` VARCHAR(45),
    `name` VARCHAR(255),
@@ -25,14 +25,12 @@ CREATE TABLE `db`.`user` (
    PRIMARY KEY (`user_id`),
    UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC) VISIBLE
 );
--- insert sample entry
-INSERT INTO `db`.`user` (`role`) VALUES (`Moderator`);
  
 CREATE TABLE `db`.`Event`(
    `Event_id` INT NOT NULL AUTO_INCREMENT,
    `Event_name` VARCHAR(255),
-   `Event_description` VARCHAR(65535),
-   `Event_Image` IMAGE(MAX),
+   `Event_description` TEXT,
+   `Event_Image` BLOB,
    `Host_Name` VARCHAR(255),
    `Host Contact Information` VARCHAR(255),
    `Host User ID` BIGINT,
@@ -80,14 +78,14 @@ CREATE TABLE `db`. `Business`(
    `Business_Location` VARCHAR(255),
    `Email` VARCHAR(255),
    `Phone_Number` VARCHAR(255),
-   `Rating` VARCHAR
+   `Rating` VARCHAR(5)
 );
 
 CREATE TABLE `db`. `Event_Request`(
 	`Request_ID`  BIGINT,
 	`Business_ID` BIGINT,
 	`Host_ID` BIGINT,
-	`Description` VARCHAR(65535)
+	`Description` TEXT
 );
  
  
