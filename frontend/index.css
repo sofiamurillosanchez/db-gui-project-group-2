@@ -1,0 +1,64 @@
+main > :not(.active) {
+  display: none;
+}
+main section.active {
+  display: block;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+#user-email{}
+#submission-form{
+  display: inline-block;
+}
+#label_sign_in{
+  text-align: right;
+
+}
+#label_sign_in textarea{
+  text-align: flex-start;
+  width: 200px;
+}
+#container-form{
+  text-align: center;
+  padding:20px
+}
+#container-form form{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+}
+#container-form .column{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+#container-form form .column input, #container form .column textarea, #container form{
+  align-self: flex-start;
+  width: 200px;
+}
+h2{
+  text-align: center;
+}
+.nav-menu{
+  position: static;
+}
+label{
+  padding-right: 5px;
+}
+#sign-up-button{
+  align-items: flex-start;
+  /*width: 250px;*/
+}
+button{
+  width: 300px;
+}
