@@ -26,6 +26,10 @@ CREATE TABLE `db`.`User` (
    UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC) VISIBLE
 );
  
+LOAD DATA INFILE 'Example_Users_Data.txt' 
+INTO TABLE User
+FIELDS TERMINATED BY ',';
+
 CREATE TABLE `db`.`Event`(
    `Event_id` INT NOT NULL AUTO_INCREMENT,
    `Event_name` VARCHAR(255),

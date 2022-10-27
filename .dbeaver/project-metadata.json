@@ -1,1 +1,1 @@
-{"resources":{"backend/mysql_setup.sql":{"default-datasource":"mysql8-183f7ac8f59-cf420147ce3478b"}}}
+{"resources":{"backend/mysql_setup.sql":{"default-datasource":"mysql8-183f7ac8f59-cf420147ce3478b","default-catalog":"db"}}}
