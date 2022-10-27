@@ -9,17 +9,17 @@ USE db;
 -- create user table in db
 CREATE TABLE `db`.`User` (
    `user_id` INT NOT NULL AUTO_INCREMENT,
-   `role` VARCHAR(45),
    `name` VARCHAR(255),
    `dob` DATE,
+   `email` VARCHAR(255),
+   `password` VARCHAR(255),
+   `company` VARCHAR(255),
+   `phone_number` VARCHAR(15),
+   `role` VARCHAR(45),
    `location` VARCHAR(50),
    `zip_code` VARCHAR (10),
-   `tagged_user` BOOLEAN,
-   `company` VARCHAR(255),
-   `email` VARCHAR(255),
-   `phone_number` VARCHAR(15),
    `ip_address` VARCHAR(50),
-   `password` VARCHAR(255),
+   `tagged_user` BOOLEAN,
    `is_host` BOOLEAN,
  
    PRIMARY KEY (`user_id`),
