@@ -87,3 +87,19 @@ const deleteEvent = async (event_name) => {
     const result = await query;
     return result;
 };
+
+module.exports = {
+    createNewEvent,
+    findEventByName,
+    findEventByLocation,
+    findEventByLocationandDate,
+    findEventByCategory,
+    findEventByHost,
+    updateEventImage,
+    updateEventDescription,
+    updateEventDate,
+    updateEventTime,
+    updateEventCapacity,
+    updateEventLocation,
+    deleteEvent,
+};
