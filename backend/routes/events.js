@@ -45,7 +45,7 @@ router.get('/getEvent', async (req, res, next) => {
         const body = req.body;
         console.log(body);
         console.log(req.models);
-        const result = await req.models.event.createNewEven(body.event_name, body.event_description, body.event_image, body.host_email, 
+        const result = await req.models.event.createNewEvent(body.event_name, body.event_description, body.event_image, body.host_email, 
             body.start_date, end_date, start_time, end_time, max_capacity, 
             body.event_location, body.ticket_cost, body.min_age, body.event_category,);
         res.status(201).json(result);
