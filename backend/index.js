@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const usersRoutes = require('./routes/users' );
 const sessionRoutes = require('./routes/session' );
 const registerRoutes  = require('./routes/register' );
+const eventRoutes = require('./routes/events' );
 const { authenticateJWT , authenticateWithClaims  } = require('./middleware/auth' );
 const { createModelsMiddleware  } = require('./middleware/model-middleware' );
 const app = express();
@@ -17,7 +18,8 @@ app.get('/health', (request, response, next) => {
 });
 app.use('/session', sessionRoutes);
 app.use('/users', authenticateJWT , usersRoutes);
-// app.use('/students', authenticateWithClaims(['professors', 'student']), usersRoutes);
+app.use('/register', registerRoutes);
+app.use('/events', authenticateJWT , eventRoutes);
 app.listen(port, () => {
   console.log(`This app is listening on port  ${port}`);
 });
