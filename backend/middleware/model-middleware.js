@@ -1,5 +1,5 @@
 const User = require('../models/users');
-const Event = require('../models/event');
+const Event = require('../models/events');
 const createModelsMiddleware = async (req, res, next) => {
    req.models = {
       users: User,
