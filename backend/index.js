@@ -1,9 +1,8 @@
 // after authentication slides
 const express = require('express');
 const bodyParser = require('body-parser');
-const usersRoutes = require('./routes/users' );
+const usersRoutes = require('./routes/user' );
 const sessionRoutes = require('./routes/session' );
-const registerRoutes  = require('./routes/register' );
 const eventRoutes = require('./routes/events' );
 const { authenticateJWT , authenticateWithClaims  } = require('./middleware/auth' );
 const { createModelsMiddleware  } = require('./middleware/model-middleware' );
@@ -17,9 +16,8 @@ app.get('/health', (request, response, next) => {
   next();
 });
 app.use('/session', sessionRoutes);
-app.use('/users', authenticateJWT , usersRoutes);
-app.use('/register', registerRoutes);
-app.use('/events', authenticateJWT , eventRoutes);
+app.use('/user', authenticateJWT , usersRoutes);
+app.use('/events', eventRoutes);
 app.listen(port, () => {
   console.log(`This app is listening on port  ${port}`);
 });

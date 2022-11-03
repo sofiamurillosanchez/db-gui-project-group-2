@@ -8,18 +8,16 @@ USE db;
  
 -- create user table in db
 CREATE TABLE `db`.`User` (
-   `email` VARCHAR(255),
+   `email` VARCHAR(255) NOT NULL,
    `name` VARCHAR(255),
    `dob` DATE,
-   `password` VARCHAR(255),
+   `password` VARCHAR(255) NOT NULL,
    `company` VARCHAR(255),
    `phone_number` VARCHAR(15),
    `role` VARCHAR(45),
    `location` VARCHAR(50),
    `zip_code` VARCHAR (10),
-   `ip_address` VARCHAR(50),
-   `tagged_user` BOOLEAN,
-   `is_host` BOOLEAN,
+   `ip_address` VARCHAR(50) UNIQUE,
  
    PRIMARY KEY (`email`)
 );
@@ -30,16 +28,14 @@ FIELDS TERMINATED BY ',';
 
 CREATE TABLE `db`.`Event`(
    `Event_id` INT NOT NULL AUTO_INCREMENT,
-   `Event_name` VARCHAR(255),
+   `Event_name` VARCHAR(255) NOT NULL,
    `Event_description` TEXT,
    `Event_Image` BLOB,
-   `Host_Name` VARCHAR(255),
-   `Host Contact Information` VARCHAR(255),
-   `Host User ID` BIGINT,
-   `Start Date` DATE,
-   `End Date` DATE,
-   `Start Time` TIME,
-   `End Time` TIME,
+   `Host_email` VARCHAR(255) NOT NULL,
+   `Start Date` DATE NOT NULL,
+   `End Date` DATE  NOT NULL,
+   `Start_Time` TIME NOT NULL,
+   `End_Time` TIME NOT NULL,
    `Num_Expected_Attendees` TIME,
    `Max_Capacity` TIME,
    `Event_Location_Name` VARCHAR(255),
