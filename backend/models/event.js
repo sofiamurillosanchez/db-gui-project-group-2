@@ -2,6 +2,8 @@ const knex = require('../database/knex');
 const bcrypt = require('bcrypt');
 const EVENT_TABLE = 'event';
 
+
+//Should we create a class for this???? 
 const createNewEvent = async (event_name, event_description, event_image, host_email, 
                               start_date, end_date, start_time, end_time, max_capacity, 
                               event_location, ticket_cost, min_age, event_category, 
@@ -82,7 +84,8 @@ const updateEventLocation = async (event_name, event_location) => {
     return result;
 };
 
-const deleteEvent = async (event_name) => {
+const deleteEvent = async (event_name) => 
+{
     const query = knex(EVENT_TABLE).where({event_name}).del();
     const result = await query;
     return result;

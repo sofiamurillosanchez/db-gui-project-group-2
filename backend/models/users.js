@@ -1,7 +1,11 @@
 const knex = require('../database/knex');
 const bcrypt = require('bcrypt');
 const USER_TABLE = 'users';
-const createNewUser = async (email, password) => {
+
+
+class user  
+{
+  createNewUser = async (email, password) => {
    console.log('Raw password:', password);
    const salt = await bcrypt.genSalt(10);
    console.log('Password salt', salt);
@@ -13,13 +17,15 @@ const createNewUser = async (email, password) => {
    return result;
 };
 
-const findUserByEmail = async (email) => {
+
+
+ findUserByEmail = async (email) => {
     const query = knex(USER_TABLE).where({ email });
     const result = await query;
     return result;
  }
 
- const authenticateUser = async (email, password) => {
+  authenticateUser = async (email, password) => {
     const users = await findUserByEmail(email);
     console.log('Results of users query', users);
     if (users.length === 0) {
@@ -34,9 +40,30 @@ const findUserByEmail = async (email) => {
     }
     return null;
  }
+ async deleteuser(id)
+ {
+   const results = await this.DBQuery('DELETE FROM user WHERE id = ?', [id]);
+   return results;
+ }
 
- module.exports = {
-    createNewUser,
-    findUserByEmail,
-    authenticateUser
- };
+ async updateuser(name, id) 
+{
+   const results = await this.DBQuery('UPDATE user SET name = ? WHERE id = ?', [name, id]);
+   return results;
+}
+
+async fetchStudentsByName (name) //if trying to implement username search?
+{
+   const results = await this.DBQuery('SELECT * FROM user WHERE name = ?', [name]);
+   return results;
+}
+
+
+}
+
+module.export = user;
+//  module.exports = {
+//     createNewUser,
+//     findUserByEmail,
+//     authenticateUser
+//  };

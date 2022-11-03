@@ -1,13 +1,17 @@
 const express = require('express');
 const router = express.Router();
 //this is authenticated user
+
+
 router.get('/current', async (req, res, next) => {
   try {
       const result = await req.models.user.findUserByEmail(req.body.email);
       res.status(201).json(result);
+      next();
   } catch (err) {
       console.error('Failed to load current user:' , err);
       res.status(500).json({ message: err.toString() });
+      next();
   }
 });
 
