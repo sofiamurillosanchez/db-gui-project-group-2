@@ -51,11 +51,11 @@ CREATE TABLE `db`.`Event`(
 );
  
 CREATE TABLE `db`.`Ticket`(
-	`Ticket_ID` BIGINT,
-	`User_ID` BIGINT,
-	`Event_ID` BIGINT
- 
+	`Ticket_ID` BIGINT NOT NULL,
+	`User_email` BIGINT NOT NULL,
+	`Event_ID` BIGINT NOT NULL
 );
+
 CREATE TABLE `db`.`Report`(
 	`Report_ID` BIGINT,
 	`Report_Type` CHAR(25),
@@ -85,6 +85,3 @@ CREATE TABLE `db`. `Event_Request`(
 	`Host_ID` BIGINT,
 	`Description` TEXT
 );
- 
- 
-
