@@ -82,6 +82,12 @@ const updateEventLocation = async (event_name, event_location) => {
     return result;
 };
 
+const updateEventCost = async (event_name, ticket_cost) => {
+    const query = knex(EVENT_TABLE).where({event_name}).update({ticket_cost});
+    const result = await query;
+    return result;
+};
+
 const deleteEvent = async (event_name) => {
     const query = knex(EVENT_TABLE).where({event_name}).del();
     const result = await query;
