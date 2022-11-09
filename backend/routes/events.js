@@ -73,8 +73,8 @@ const router = express.Router();
             const body = req.body;
             console.log(body);
             console.log(req.models);
-            const result = await req.models.event.createNewEvent(body.event_name, body.event_description, body.event_image, body.host_email, 
-                body.start_date, end_date, start_time, end_time, max_capacity, 
+            const result = await req.models.event.createNewEvent(body.event_ID, body.event_name, body.event_description, body.event_image, body.host_email, 
+                body.start_date, body.end_date, body.start_time, body.end_time, body.max_capacity, 
                 body.event_location, body.ticket_cost, body.min_age, body.event_category,);
             res.status(201).json(result);
         } catch (err) {
@@ -89,7 +89,7 @@ const router = express.Router();
             const body = req.body;
             console.log(body);
             console.log(req.models);
-            const result = await req.models.event.setImageUrl(body.event_name, body.event_image);
+            const result = await req.models.event.setImageUrl(body.event_ID, body.event_image);
             res.status(201).json(result);
         } catch (err) {
             console.error('Failed to set image url:', err);
@@ -103,7 +103,7 @@ const router = express.Router();
             const body = req.body;
             console.log(body);
             console.log(req.models);
-            const result = await req.models.event.setDescription(body.event_name, body.event_description);  
+            const result = await req.models.event.setDescription(body.event_ID, body.event_description);  
             res.status(201).json(result);
         } catch (err) {
             console.error('Failed to set description:', err);
@@ -118,7 +118,7 @@ const router = express.Router();
             const body = req.body;
             console.log(body);
             console.log(req.models);
-            const result = await req.models.event.updateEventDate(body.event_name, body.start_date, body.end_date);
+            const result = await req.models.event.updateEventDate(body.event_ID, body.start_date, body.end_date);
             res.status(201).json(result);
         } catch (err) {
             console.error('Failed to update event date:', err);
@@ -132,7 +132,7 @@ const router = express.Router();
             const body = req.body;
             console.log(body);
             console.log(req.models);
-            const result = await req.models.event.updateEventTime(body.event_name, body.start_time, body.end_time);
+            const result = await req.models.event.updateEventTime(body.event_ID, body.start_time, body.end_time);
             res.status(201).json(result);
         } catch (err) {
             console.error('Failed to update event time:', err);
@@ -146,7 +146,7 @@ const router = express.Router();
             const body = req.body;
             console.log(body);
             console.log(req.models);
-            const result = await req.models.event.updateEventCapacity(body.event_name, body.max_capacity);
+            const result = await req.models.event.updateEventCapacity(body.event_ID, body.max_capacity);
             res.status(201).json(result);
         } catch (err) {
             console.error('Failed to update event capacity:', err);
@@ -161,7 +161,7 @@ const router = express.Router();
         const body = req.body;
         console.log(body);
         console.log(req.models);
-        const result = await req.models.event.updateEventLocation(body.event_name, body.event_location);
+        const result = await req.models.event.updateEventLocation(body.event_ID, body.event_location);
         res.status(201).json(result);
     } catch (err) {
         console.error('Failed to update event location:', err);
@@ -175,7 +175,7 @@ const router = express.Router();
             const body = req.body;
             console.log(body);
             console.log(req.models);
-            const result = await req.models.event.updateEventCost(body.event_name, body.ticket_cost);
+            const result = await req.models.event.updateEventCost(body.event_ID, body.ticket_cost);
             res.status(201).json(result);
         } catch (err) {
             console.error('Failed to update event cost:', err);
@@ -189,7 +189,7 @@ const router = express.Router();
             const body = req.body;
             console.log(body);
             console.log(req.models);
-            const result = await req.models.event.updateEventCategory(body.event_name, body.event_category);
+            const result = await req.models.event.updateEventCategory(body.event_ID, body.event_category);
             res.status(201).json(result);
         } catch (err) {
             console.error('Failed to update event category:', err);
@@ -203,7 +203,7 @@ const router = express.Router();
             const body = req.body;
             console.log(body);
             console.log(req.models);
-            const result = await req.models.event.deleteEvent(body.event_name);
+            const result = await req.models.event.deleteEvent(body.event_ID);
             res.status(201).json(result);
         } catch (err) {
             console.error('Failed to delete event:', err);
