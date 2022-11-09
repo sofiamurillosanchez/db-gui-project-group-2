@@ -2,14 +2,14 @@ const knex = require('../database/knex');
 const bcrypt = require('bcrypt');
 const EVENT_TABLE = 'event';
 
-const createNewEvent = async (event_name, event_description, event_image, host_email, 
+const createNewEvent = async (event_ID, event_name, event_description, event_image, host_email, 
                               start_date, end_date, start_time, end_time, max_capacity, 
                               event_location, ticket_cost, min_age, event_category, 
                               ) => {
 
-    const query = knex(EVENT_TABLE).insert({ event_name, event_description, event_image, host_email, 
-                                             start_date, end_date, start_time, end_time, max_capacity, 
-                                             event_location, ticket_cost, min_age, event_category, 
+    const query = knex(EVENT_TABLE).insert({event_ID, event_name, event_description, event_image, host_email, 
+                                            start_date, end_date, start_time, end_time, max_capacity, 
+                                            event_location, ticket_cost, min_age, event_category, 
                                              });
     console.log('Raw query for createNewEvent:', query.toString());
     const result = await query;
