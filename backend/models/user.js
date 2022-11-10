@@ -110,4 +110,4 @@ const deleteUser=async(email)=> {
     updateLocation,
     updateUsername,
     deleteUser
- }
+ }      
