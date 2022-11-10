@@ -1,6 +1,6 @@
 const knex = require('../database/knex');
 const bcrypt = require('bcrypt');
-const EVENT_TABLE = 'Event';
+const EVENT_TABLE = 'Event_tbl';
 
 const createNewEvent = async (Event_id, Event_name, Event_description, Event_Image, Host_Name, 
                 Host_Contact_Information, Start_Date, End_Date, Start_Time, End_Time, Num_Expected_Attendees, Max_Capacity, 
