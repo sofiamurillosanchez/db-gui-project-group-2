@@ -8,6 +8,8 @@ const { log, ExpressAPILogMiddleware } = require('@rama41222/node-logger');
 const routes = require('./routes');
 
 // set up some configs for express.
+
+//NOTE: MAY HAVE TO MODIFY DEPENDING ON LOCAL CONTAINER PORT #
 const config = {
   name: 'sample-express-app',
   port: 8000,
