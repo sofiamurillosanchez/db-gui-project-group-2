@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS Event_Request
 -- create user table in db
 CREATE TABLE `db`.`User`(
    `email` VARCHAR(255) NOT NULL,
-   `name` VARCHAR(255),
+   `name` VARCHAR(255) NOT NULL,
    `dob` DATE,
    `password` VARCHAR(255) NOT NULL,
    `company` VARCHAR(255),
@@ -25,7 +25,7 @@ CREATE TABLE `db`.`User`(
    `role` VARCHAR(45),
    `location` VARCHAR(50),
    `zip_code` VARCHAR (10),
-   `ip_address` VARCHAR(50) UNIQUE,
+   `ip_address` VARCHAR(50) UNIQUE NOT NULL,
    `tagged_user` BOOLEAN,
    PRIMARY KEY (`email`)
 );
@@ -67,7 +67,7 @@ CREATE TABLE `db`.`Ticket`(
 );
 
 CREATE TABLE `db`.`Report`(
-	`Report_ID` BIGINT,
+	`Report_ID` BIGINT NOT NULL,
 	`Report_Type` CHAR(25),
 	`Report_Date` DATE,
 	`Report_Reason` VARCHAR(255),
@@ -77,13 +77,13 @@ CREATE TABLE `db`.`Report`(
    PRIMARY KEY (`Report_ID`)
 );
 CREATE TABLE `db`. `BannedIPs_Superlist`(
-   `IP_Address` NUMERIC,
+   `IP_Address` NUMERIC NOT NULL,
    `Report_ID` BIGINT,
    PRIMARY KEY (`IP_Address`)
 );
  
 CREATE TABLE `db`. `Business`(
-   `Business_ID` BIGINT,
+   `Business_ID` BIGINT NOT NULL,
    `Business_Name` VARCHAR(255),
    `Business_Location` VARCHAR(255),
    `Email` VARCHAR(255),
@@ -93,7 +93,7 @@ CREATE TABLE `db`. `Business`(
 );
 
 CREATE TABLE `db`. `Event_Request`(
-	`Request_ID`  BIGINT,
+	`Request_ID`  BIGINT NOT NULL,
 	`Business_ID` BIGINT,
 	`Host_ID` BIGINT,
 	`Description` TEXT,
