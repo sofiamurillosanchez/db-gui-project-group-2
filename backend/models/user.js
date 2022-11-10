@@ -21,7 +21,7 @@ const findUserByEmail = async (email) => {
     return result;
  }
 
- const findUserByName = async (name) => {
+const findUserByName = async (name) => {
       const query = knex(USER_TABLE).where({ name });
       const result = await query;
       return result;
@@ -82,7 +82,7 @@ const deleteUser=async(email)=> {
       return result;
 }
 
- const authenticateUser = async (email, password) => {
+const authenticateUser = async (email, password) => {
     const users = await findUserByEmail(email);
     console.log('Results of users query', users);
     if (users.length === 0) {
@@ -109,5 +109,7 @@ const deleteUser=async(email)=> {
     updateRole,
     updateLocation,
     updateUsername,
-    deleteUser
+    deleteUser,
+    updateTaggedUser,
+    findTaggedUser
  }      
