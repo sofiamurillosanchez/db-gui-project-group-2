@@ -86,7 +86,7 @@ const router = express.Router();
         next();
         });
 
-    router.put('setImageUrl', async (req, res, next) => {
+    router.put('/setImageUrl', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
@@ -100,7 +100,7 @@ const router = express.Router();
         next(); 
     });
 
-    router.put('setDescription', async (req, res, next) => {
+    router.put('/setDescription', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
