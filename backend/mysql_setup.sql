@@ -5,6 +5,14 @@ CREATE DATABASE IF NOT EXISTS db;
  
 -- use newly create database
 USE db;
+
+DROP TABLE IF EXISTS User
+DROP TABLE IF EXISTS Event
+DROP TABLE IF EXISTS Ticket
+DROP TABLE IF EXISTS Report
+DROP TABLE IF EXISTS BannedIPs_Superlist
+DROP TABLE IF EXISTS Business
+DROP TABLE IF EXISTS Event_Request
  
 -- create user table in db
 CREATE TABLE `db`.`User`(
