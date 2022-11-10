@@ -7,7 +7,7 @@ CREATE DATABASE IF NOT EXISTS db;
 USE db;
  
 -- create user table in db
-CREATE TABLE `db`.`User` (
+CREATE TABLE `db`.`User`(
    `email` VARCHAR(255) NOT NULL,
    `name` VARCHAR(255),
    `dob` DATE,
@@ -18,7 +18,7 @@ CREATE TABLE `db`.`User` (
    `location` VARCHAR(50),
    `zip_code` VARCHAR (10),
    `ip_address` VARCHAR(50) UNIQUE,
- 
+   `tagged_user` BOOLEAN,
    PRIMARY KEY (`email`)
 );
  
@@ -31,9 +31,10 @@ CREATE TABLE `db`.`Event`(
    `Event_name` VARCHAR(255) NOT NULL,
    `Event_description` TEXT,
    `Event_Image` BLOB,
-   `Host_email` VARCHAR(255) NOT NULL,
-   `Start Date` DATE NOT NULL,
-   `End Date` DATE  NOT NULL,
+   `Host_Name` VARCHAR(255) NOT NULL,
+   `Host_Contact_Information` VARCHAR(255) NOT NULL,
+   `Start_Date` DATE NOT NULL,
+   `End_Date` DATE  NOT NULL,
    `Start_Time` TIME NOT NULL,
    `End_Time` TIME NOT NULL,
    `Num_Expected_Attendees` TIME,
@@ -51,9 +52,10 @@ CREATE TABLE `db`.`Event`(
 );
  
 CREATE TABLE `db`.`Ticket`(
-	`Ticket_ID` BIGINT NOT NULL,
-	`User_email` BIGINT NOT NULL,
-	`Event_ID` BIGINT NOT NULL
+	`Ticket_ID` BIGINT NOT NULL AUTO_INCREMENT,
+	`User_Email` BIGINT NOT NULL,
+	`Event_ID` BIGINT NOT NULL,
+   PRIMARY KEY (`Ticket_ID`)
 );
 
 CREATE TABLE `db`.`Report`(
@@ -63,11 +65,13 @@ CREATE TABLE `db`.`Report`(
 	`Report_Reason` VARCHAR(255),
 	`Sent_To` VARCHAR(255),
 	`Report_Addressed` BOOLEAN,
-	`Entity_Reported_ID` BIGINT
+	`Entity_Reported_ID` BIGINT,
+   PRIMARY KEY (`Report_ID`)
 );
 CREATE TABLE `db`. `BannedIPs_Superlist`(
    `IP_Address` NUMERIC,
-   `Report_ID` BIGINT
+   `Report_ID` BIGINT,
+   PRIMARY KEY (`IP_Address`)
 );
  
 CREATE TABLE `db`. `Business`(
@@ -76,12 +80,14 @@ CREATE TABLE `db`. `Business`(
    `Business_Location` VARCHAR(255),
    `Email` VARCHAR(255),
    `Phone_Number` VARCHAR(255),
-   `Rating` VARCHAR(5)
+   `Rating` VARCHAR(5),
+   PRIMARY KEY (`Business_ID`)
 );
 
 CREATE TABLE `db`. `Event_Request`(
 	`Request_ID`  BIGINT,
 	`Business_ID` BIGINT,
 	`Host_ID` BIGINT,
-	`Description` TEXT
+	`Description` TEXT,
+   PRIMARY KEY (`Request_ID`)
 );
