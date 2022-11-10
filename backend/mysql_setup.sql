@@ -67,7 +67,7 @@ CREATE TABLE `db`.`Ticket`(
 );
 
 CREATE TABLE `db`.`Report`(
-	`Report_ID` BIGINT NOT NULL,
+	`Report_ID` BIGINT NOT NULL AUTO_INCREMENT,
 	`Report_Type` CHAR(25),
 	`Report_Date` DATE,
 	`Report_Reason` VARCHAR(255),
@@ -83,7 +83,7 @@ CREATE TABLE `db`. `BannedIPs_Superlist`(
 );
  
 CREATE TABLE `db`. `Business`(
-   `Business_ID` BIGINT NOT NULL,
+   `Business_ID` BIGINT NOT NULL AUTO_INCREMENT,
    `Business_Name` VARCHAR(255),
    `Business_Location` VARCHAR(255),
    `Email` VARCHAR(255),
@@ -93,7 +93,7 @@ CREATE TABLE `db`. `Business`(
 );
 
 CREATE TABLE `db`. `Event_Request`(
-	`Request_ID`  BIGINT NOT NULL,
+	`Request_ID`  BIGINT NOT NULL AUTO_INCREMENT,
 	`Business_ID` BIGINT,
 	`Host_ID` BIGINT,
 	`Description` TEXT,
