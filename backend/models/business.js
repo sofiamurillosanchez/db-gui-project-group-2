@@ -2,7 +2,7 @@ const knex = require('../database/knex');
 const bcrypt = require('bcrypt');
 const BUSINESS_TABLE = 'Business';
 
-const createNewBusiness = async (Business_ID, Business_Name, Business_Location, Email, Phone_Number, Rating) => {
+const createBusiness = async (Business_ID, Business_Name, Business_Location, Email, Phone_Number, Rating) => {
     const query = knex(BUSINESS_TABLE).insert({ Business_ID, Business_Name, Business_Location, Email, Phone_Number, Rating});
     console.log('Raw query for createNewBusiness:', query.toString());
     const result = await query;
@@ -64,7 +64,7 @@ const updateBusinessRating = async (Business_ID, Rating) => {
 }
 
 module.exports = {
-    createNewBusiness,
+    createBusiness,
     findBusinessByID,
     findBusinessByName,
     findBusinessByLocation,
