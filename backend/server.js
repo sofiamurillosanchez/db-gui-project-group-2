@@ -8,15 +8,13 @@ const { log, ExpressAPILogMiddleware } = require('@rama41222/node-logger');
 const routes = require('./routes');
 
 // set up some configs for express.
-
-//NOTE: MAY HAVE TO MODIFY DEPENDING ON LOCAL CONTAINER PORT #
 const config = {
   name: 'sample-express-app',
   port: 8000,
   host: '0.0.0.0',
 };
 
-// create the express.js object
+// create the express.js object, creates api application
 const app = express();
 
 // create a logger object.  Using logger is preferable to simply writing to the console.
