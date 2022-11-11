@@ -8,6 +8,7 @@ const ticketRoutes = require('./routes/ticket' );
 const businessRoutes = require('./routes/business' );
 const reportRoutes = require('./routes/report' );
 const event_requestRoutes = require('./routes/event_request' );
+const bannedIP_SuperlistRoutes = require('./routes/bannedIP_Superlist' );
 const { authenticateJWT , authenticateWithClaims  } = require('./middleware/auth' );
 const { createModelsMiddleware  } = require('./middleware/model-middleware' );
 const app = express();
@@ -26,6 +27,7 @@ app.use('/ticket', ticketRoutes);
 app.use('/business', businessRoutes);
 app.use('/report', reportRoutes);
 app.use('/event_request', event_requestRoutes);
+app.use('/bannedIP_Superlist', bannedIP_SuperlistRoutes);
 app.listen(port, () => {
   console.log(`This app is listening on port  ${port}`);
 });
