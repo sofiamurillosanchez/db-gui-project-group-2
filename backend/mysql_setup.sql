@@ -21,7 +21,7 @@ CREATE TABLE `db`.`User`(
    `tagged_user` BOOLEAN,
    PRIMARY KEY (`email`)
 );
- 
+
 LOAD DATA INFILE 'Example_Users_Data.txt' 
 INTO TABLE User
 FIELDS TERMINATED BY ',';
@@ -34,7 +34,7 @@ CREATE TABLE `db`.`Event`(
    `Host_Name` VARCHAR(255) NOT NULL,
    `Host_Contact_Information` VARCHAR(255) NOT NULL,
    `Start_Date` DATE NOT NULL,
-   `End_Date` DATE  NOT NULL,
+   `End_Date` DATE NOT NULL,
    `Start_Time` TIME NOT NULL,
    `End_Time` TIME NOT NULL,
    `Num_Expected_Attendees` TIME,
@@ -53,7 +53,7 @@ CREATE TABLE `db`.`Event`(
  
 CREATE TABLE `db`.`Ticket`(
 	`Ticket_ID` BIGINT NOT NULL AUTO_INCREMENT,
-	`User_Email` BIGINT NOT NULL,
+	`User_Email` VARCHAR(255) NOT NULL,
 	`Event_ID` BIGINT NOT NULL,
    PRIMARY KEY (`Ticket_ID`)
 );
