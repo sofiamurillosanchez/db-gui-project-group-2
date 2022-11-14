@@ -16,7 +16,8 @@ const createNewUser = async (email, name, dob, password, company, phone_number, 
 }
 
 const findUserByEmail = async (email) => {
-    const query = knex(USER_TABLE).where({ email });
+      console.log(email);
+    const query = knex(USER_TABLE).where({ email: email });
     const result = await query;
     return result;
  }

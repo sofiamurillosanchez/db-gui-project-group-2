@@ -5,6 +5,7 @@ const router = express.Router();
     router.get('/getByEmail', async (req, res, next) => {
     try {
         const body = req.body;
+        console.log(body);
         const result = await req.models.user.findUserByEmail(body.email);
         res.status(201).json(result);
     } catch (err) {

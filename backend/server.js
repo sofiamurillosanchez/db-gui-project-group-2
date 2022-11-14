@@ -10,9 +10,6 @@ const routes = require('./routes');
 // set up some configs for express.
 const config = {
   name: 'sample-express-app',
-  headers: {
-    Authorization: 'admin'
-  },
   port: 8000,
   host: '0.0.0.0',
 };
