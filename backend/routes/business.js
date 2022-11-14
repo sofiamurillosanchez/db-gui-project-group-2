@@ -113,4 +113,15 @@ router.put('/updateBusinessRating', async (req, res, next) => {
     }
 });
 
+router.delete('/deleteBusiness', async (req, res, next) => {
+    try {
+        const body = req.body;
+        const result = await req.models.business.deleteBusiness(body.Business_ID);
+        res.status(201).json(result);
+    } catch (err) {
+        console.error('Failed to delete business:' , err);
+        res.status(500).json({ message: err.toString() });
+    }
+});
+
 module.exports = router;
