@@ -23,13 +23,13 @@ const findUserByEmail = async (email) => {
  }
 
 const findUserByName = async (name) => {
-      const query = knex(USER_TABLE).where({ name });
+      const query = knex(USER_TABLE).where({ name: name });
       const result = await query;
       return result;
 }
 
 const findUserByLocation = async (location) => {
-      const query = knex(USER_TABLE).where({ location });
+      const query = knex(USER_TABLE).where({ location: location });
       const result = await query;
       return result;
 }
@@ -41,44 +41,44 @@ const findUserByIP = async (ip_address) => {
 }
 
 const findTaggedUser = async (tagged_user) => {
-      const query = knex(USER_TABLE).where({ tagged_user });
+      const query = knex(USER_TABLE).where({ tagged_user: tagged_user });
       const result = await query;
       return result;
 }
 
 const updateCompany = async (email, company) => {
-      const query = knex(USER_TABLE).where({ email }).update({ company });
+      const query = knex(USER_TABLE).where({ email: email }).update({ company: company });
       const result = await query;
       return result;
 }
 
 const updateRole = async (email, role) => {
-      const query = knex(USER_TABLE).where({ email }).update({ role });
+      const query = knex(USER_TABLE).where({ email: email }).update({ role: role });
       const result = await query;
       return result;
 }
 
 const updateLocation = async (email, location) => {
-      const query = knex(USER_TABLE).where({ email }).update({ location });
+      const query = knex(USER_TABLE).where({ email: email }).update({ location: location });
       const result = await query;
       return result;
 }
 
 
 const updateUsername = async(email, name)=>{ 
-      const query = knex(USER_TABLE).where({ email }).update({ name });
+      const query = knex(USER_TABLE).where({ email: email }).update({ name: name });
       const result = await query;
       return result;
 }
 
 const updateTaggedUser = async (email, tagged_user) => {
-      const query = knex(USER_TABLE).where({ email }).update({ tagged_user });
+      const query = knex(USER_TABLE).where({ email: email }).update({ tagged_user: tagged_user });
       const result = await query;
       return result;
 }
 
 const deleteUser=async(email)=> {
-      const query = knex(USER_TABLE).where({ email }).del();
+      const query = knex(USER_TABLE).where({ email: email }).del();
       const result = await query;
       return result;
 }
