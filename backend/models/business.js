@@ -63,6 +63,12 @@ const updateBusinessRating = async (Business_ID, Rating) => {
     return result;
 }
 
+const deleteBusiness = async (Business_ID) => {
+    const query = knex(BUSINESS_TABLE).where({ Business_ID }).del();
+    const result = await query;
+    return result;
+}
+
 module.exports = {
     createBusiness,
     findBusinessByID,
@@ -73,5 +79,6 @@ module.exports = {
     updateBusinessLocation,
     updateBusinessEmail,
     updateBusinessPhoneNumber,
-    updateBusinessRating
+    updateBusinessRating,
+    deleteBusiness
 }
