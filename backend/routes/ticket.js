@@ -4,7 +4,7 @@ const router = express.Router();
 router.post('/createTicket', async (req, res, next) => {
     try {
         const body = req.body;
-        const result = await req.models.ticket.createTicket(body.Ticket_ID, body.User_Email, body.Event_ID);
+        const result = await req.models.ticket.createNewTicket(body.Ticket_ID, body.User_Email, body.Event_ID);
         res.status(201).json(result);
     } catch (err) {
         console.error('Failed to create ticket:' , err);
