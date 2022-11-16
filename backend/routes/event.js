@@ -75,9 +75,9 @@ const router = express.Router();
             console.log(body);
             console.log(req.models);
             const result = await req.models.event.createNewEvent(body.Event_id, body.Event_name, body.Event_description, body.Event_Image, body.Host_Name, 
-                body.Host_Contact_Information, body.Start_Date, body.End_Date, body.Start_Time, body.End_Time, body.Num_Expected_Attendees, body.Max_Capacity, 
-                body.Event_Location_Name, body.Event_Location_Address, body.Dress_Code, body.Ticket_Cost, body.Minimum_Age_Requirement,  body.Event_Type, body.Event_Category,
-                body.Event_Activities, body.Status);
+            body.Host_Contact_Information, body.Start_Date, body.End_Date, body.Start_Time, body.End_Time, body.Num_Expected_Attendees, body.Max_Capacity, 
+               body.Event_Location_Name, body.Event_Location_Address, body.Dress_Code, body.Ticket_Cost, body.Minimum_Age_Requirement,  body.Event_Type, body.Event_Category,
+               body.Event_Activities, body.Status);
             res.status(201).json(result);
         } catch (err) {
             console.error('Failed to create new event:', err);
@@ -86,6 +86,20 @@ const router = express.Router();
         next();
         });
 
+    router.put('/setEventName', async (req, res, next) => {
+        try {
+            const body = req.body;
+            console.log(body);
+            console.log(req.models);
+            const result = await req.models.event.setEventName(body.Event_id, body.Event_name);
+            res.status(201).json(result);
+        } catch (err) {
+            console.error('Failed to set event name:', err);
+            res.status(500).json({ message: err.toString() });
+        }
+        next();
+    });
+    
     router.put('/setImageUrl', async (req, res, next) => {
         try {
             const body = req.body;
