@@ -94,6 +94,12 @@ const updateEventCost = async (Event_id, Ticket_Cost) => {
     return result;
 }
 
+const updateHostContactInfo = async (Event_id, Host_Contact_Information) => {
+    const query = knex(EVENT_TABLE).where({Event_id}).update({Host_Contact_Information});
+    const result = await query;
+    return result;
+}
+
 const deleteEvent = async (Event_id) => {
     const query = knex(EVENT_TABLE).where({Event_id}).del();
     const result = await query;
@@ -114,5 +120,7 @@ module.exports = {
     updateEventTime,
     updateEventCapacity,
     updateEventLocation,
+    updateEventCost,
+    updateHostContactInfo,
     deleteEvent,
 }
