@@ -91,7 +91,7 @@ const router = express.Router();
             const body = req.body;
             console.log(body);
             console.log(req.models);
-            const result = await req.models.event.setEventName(body.Event_id, body.Event_name);
+            const result = await req.models.event.updateEventName(body.Event_id, body.Event_name);
             res.status(201).json(result);
         } catch (err) {
             console.error('Failed to set event name:', err);
@@ -99,7 +99,7 @@ const router = express.Router();
         }
         next();
     });
-    
+
     router.put('/setImageUrl', async (req, res, next) => {
         try {
             const body = req.body;
@@ -209,6 +209,20 @@ const router = express.Router();
             res.status(201).json(result);
         } catch (err) {
             console.error('Failed to update event category:', err);
+            res.status(500).json({ message: err.toString() });
+        }
+        next();
+    });
+
+    router.put('/setHostContactInfo', async (req, res, next) => {
+        try {
+            const body = req.body;
+            console.log(body);
+            console.log(req.models);
+            const result = await req.models.event.updateHostContactInfo(body.Event_id, body.Host_Contact_Information);
+            res.status(201).json(result);
+        } catch (err) {
+            console.error('Failed to update host contact info:', err);
             res.status(500).json({ message: err.toString() });
         }
         next();
