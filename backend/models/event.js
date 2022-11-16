@@ -1,11 +1,11 @@
 const knex = require('../database/knex');
 const bcrypt = require('bcrypt');
-const EVENT_TABLE = 'Event_tbl';
+const EVENT_TABLE = 'Event';
 
 const createNewEvent = async (Event_id, Event_name, Event_description, Event_Image, Host_Name, 
-                Host_Contact_Information, Start_Date, End_Date, Start_Time, End_Time, Num_Expected_Attendees, Max_Capacity, 
-                Event_Location_Name, Event_Location_Address, Dress_Code, Ticket_Cost, Minimum_Age_Requirement,  Event_Type, Event_Category,
-                Event_Activities, Status) => {
+    Host_Contact_Information, Start_Date, End_Date, Start_Time, End_Time, Num_Expected_Attendees, Max_Capacity, 
+    Event_Location_Name, Event_Location_Address, Dress_Code, Ticket_Cost, Minimum_Age_Requirement,  Event_Type, Event_Category,
+    Event_Activities, Status) => {
 
     const query = knex(EVENT_TABLE).insert({Event_id, Event_name, Event_description, Event_Image, Host_Name, 
         Host_Contact_Information, Start_Date, End_Date, Start_Time, End_Time, Num_Expected_Attendees, Max_Capacity, 
@@ -42,6 +42,12 @@ const findEventByCategory = async (Event_Category) => {
 
 const findEventByHost = async (Host_Name) => {
     const query = knex(EVENT_TABLE).where({Host_Name});
+    const result = await query;
+    return result;
+}
+
+const updateEventName = async (Event_id, Event_name) => {
+    const query = knex(EVENT_TABLE).where({Event_id}).update({Event_name});
     const result = await query;
     return result;
 }
@@ -101,6 +107,7 @@ module.exports = {
     findEventByLocationandDate,
     findEventByCategory,
     findEventByHost,
+    updateEventName,
     updateEventImage,
     updateEventDescription,
     updateEventDate,
