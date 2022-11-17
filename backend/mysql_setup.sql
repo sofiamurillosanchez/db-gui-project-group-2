@@ -30,23 +30,14 @@ CREATE TABLE `db`.`Event`(
    `Event_id` INT NOT NULL AUTO_INCREMENT,
    `Event_name` VARCHAR(255) NOT NULL,
    `Event_description` TEXT,
-   `Event_Image` BLOB,
    `Host_email` VARCHAR(255) NOT NULL,
    `Start Date` DATE NOT NULL,
    `End Date` DATE  NOT NULL,
    `Start_Time` TIME NOT NULL,
    `End_Time` TIME NOT NULL,
-   `Num_Expected_Attendees` TIME,
-   `Max_Capacity` TIME,
    `Event_Location_Name` VARCHAR(255),
    `Event_Location_Address` VARCHAR(255),
-   `Dress_Code` VARCHAR(255),
    `Ticket_Cost` Decimal(10, 2),
-   `Minimum_Age_Requirement` INT, 
-   `Event_Type` VARCHAR(255),
-   `Event_Category` VARCHAR(255),
-   `Event_Activities` VARCHAR(255),
-   `Status`  CHAR(25),
 	PRIMARY KEY (`event_id`)
 );
  
