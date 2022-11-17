@@ -28,20 +28,29 @@ LOAD DATA INFILE 'Users.csv'
 INTO TABLE User
 FIELDS TERMINATED BY ',';
 
-CREATE TABLE `db`.`Event`(
-   `Event_id` INT NOT NULL AUTO_INCREMENT,
-   `Event_name` VARCHAR(255) NOT NULL,
-   `Event_description` TEXT,
-   `Host_email` VARCHAR(255) NOT NULL,
-   `Start Date` DATE NOT NULL,
-   `End Date` DATE  NOT NULL,
-   `Start_Time` TIME NOT NULL,
-   `End_Time` TIME NOT NULL,
-   `Event_Location_Name` VARCHAR(255),
-   `Event_Location_Address` VARCHAR(255),
-   `Ticket_Cost` Decimal(10, 2),
-	PRIMARY KEY (`event_id`)
+CREATE TABLE `Event` (
+  `Event_id` int NOT NULL AUTO_INCREMENT,
+  `Event_name` varchar(255) DEFAULT NULL,
+  `Event_description` text,
+  `Host_Name` varchar(255) DEFAULT NULL,
+  `Host_Contact_Information` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Start_Date` date DEFAULT NULL,
+  `End_Date` date DEFAULT NULL,
+  `Start_Time` time DEFAULT NULL,
+  `End_Time` time DEFAULT NULL,
+  `Num_Expected_Attendees` bigint DEFAULT NULL,
+  `Max_Capacity` bigint DEFAULT NULL,
+  `Event_Location_Name` varchar(255) DEFAULT NULL,
+  `Event_Location_Address` varchar(255) DEFAULT NULL,
+  `Dress_Code` varchar(255) DEFAULT NULL,
+  `Ticket_Cost` decimal(10,2) DEFAULT NULL,
+  `Event_Type` varchar(255) DEFAULT NULL,
+  `Event_Category` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`Event_id`),
+  KEY `Event_FK` (`Host_Contact_Information`),
+  CONSTRAINT `Event_FK` FOREIGN KEY (`Host_Contact_Information`) REFERENCES `User` (`email`)
 );
+
 
  
 CREATE TABLE if not exists `db`.`Ticket`(
