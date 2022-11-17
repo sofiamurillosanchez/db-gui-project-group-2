@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS db;
+--DROP DATABASE IF EXISTS db;  //Do NOT DO THIS THE CODE COMMENTED TO LEFT UNLESS WANT TO DELETE ALL TABLES IN DB!
  
 -- create database db
 CREATE DATABASE IF NOT EXISTS db;
@@ -7,7 +7,7 @@ CREATE DATABASE IF NOT EXISTS db;
 USE db;
  
 -- create user table in db
-CREATE TABLE `db`.`User`(
+CREATE TABLE if not exists `db`.`User`(
    `email` VARCHAR(255) NOT NULL,
    `name` VARCHAR(255),
    `dob` DATE,
@@ -19,14 +19,16 @@ CREATE TABLE `db`.`User`(
    `zip_code` VARCHAR (10),
    `ip_address` VARCHAR(50) UNIQUE,
    `tagged_user` BOOLEAN,
+   `is_host` BOOLEAN,
+   `User_ID` int DEFAULT NULL, 
    PRIMARY KEY (`email`)
 );
 
-LOAD DATA INFILE 'Example_Users_Data.txt' 
+LOAD DATA INFILE 'Users.csv' 
 INTO TABLE User
 FIELDS TERMINATED BY ',';
 
-CREATE TABLE `db`.`Event`(
+CREATE TABLE if not exists `db`.`Event`(
    `Event_id` INT NOT NULL AUTO_INCREMENT,
    `Event_name` VARCHAR(255) NOT NULL,
    `Event_description` TEXT,
@@ -51,14 +53,14 @@ CREATE TABLE `db`.`Event`(
 	PRIMARY KEY (`event_id`)
 );
  
-CREATE TABLE `db`.`Ticket`(
+CREATE TABLE if not exists `db`.`Ticket`(
 	`Ticket_ID` BIGINT NOT NULL AUTO_INCREMENT,
 	`User_Email` VARCHAR(255) NOT NULL,
 	`Event_ID` BIGINT NOT NULL,
    PRIMARY KEY (`Ticket_ID`)
 );
 
-CREATE TABLE `db`.`Report`(
+CREATE TABLE if not exists `db`.`Report`(
 	`Report_ID` BIGINT,
 	`Report_Type` CHAR(25),
 	`Report_Date` DATE,
@@ -68,13 +70,13 @@ CREATE TABLE `db`.`Report`(
 	`Entity_Reported_ID` BIGINT,
    PRIMARY KEY (`Report_ID`)
 );
-CREATE TABLE `db`. `BannedIPs_Superlist`(
+CREATE TABLE if not exists `db`. `BannedIPs_Superlist`(
    `IP_Address` NUMERIC,
    `Report_ID` BIGINT,
    PRIMARY KEY (`IP_Address`)
 );
  
-CREATE TABLE `db`. `Business`(
+CREATE TABLE if not exists `db`. `Business`(
    `Business_ID` BIGINT,
    `Business_Name` VARCHAR(255),
    `Business_Location` VARCHAR(255),
@@ -84,7 +86,7 @@ CREATE TABLE `db`. `Business`(
    PRIMARY KEY (`Business_ID`)
 );
 
-CREATE TABLE `db`. `Event_Request`(
+CREATE TABLE if not exists `db`. `Event_Request`(
 	`Request_ID`  BIGINT,
 	`Business_ID` BIGINT,
 	`Host_ID` BIGINT,
