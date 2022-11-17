@@ -46,6 +46,14 @@ const findTaggedUser = async (tagged_user) => {
       return result;
 }
 
+const updatePassword = async (email, password) => {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+      const query = knex(USER_TABLE).where({ email: email}).update({ password: hashedPassword });
+      const result = await query;
+      return result;
+}
+
 const updateCompany = async (email, company) => {
       const query = knex(USER_TABLE).where({ email: email }).update({ company: company });
       const result = await query;
@@ -99,6 +107,7 @@ const authenticateUser = async (email, password) => {
     return null;
  }
 
+
  module.exports = {
     createNewUser,
     findUserByEmail,
@@ -106,6 +115,7 @@ const authenticateUser = async (email, password) => {
     findUserByName,
     findUserByLocation,
     findUserByIP,
+    updatePassword,
     updateCompany,
     updateRole,
     updateLocation,
