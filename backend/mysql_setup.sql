@@ -28,32 +28,21 @@ LOAD DATA INFILE 'Users.csv'
 INTO TABLE User
 FIELDS TERMINATED BY ',';
 
-CREATE TABLE if not exists `db`.`Event`(
-   `Event_id` INT NOT NULL AUTO_INCREMENT UNIQUE,
+CREATE TABLE `db`.`Event`(
+   `Event_id` INT NOT NULL AUTO_INCREMENT,
    `Event_name` VARCHAR(255) NOT NULL,
    `Event_description` TEXT,
-   `Event_Image` BLOB,
-   `Host_Name` VARCHAR(255) NOT NULL,
-   `Host_Contact_Information` VARCHAR(255) NOT NULL,
-   `Start_Date` DATE NOT NULL,
-   `End_Date` DATE NOT NULL,
+   `Host_email` VARCHAR(255) NOT NULL,
+   `Start Date` DATE NOT NULL,
+   `End Date` DATE  NOT NULL,
    `Start_Time` TIME NOT NULL,
    `End_Time` TIME NOT NULL,
-   `Num_Expected_Attendees` TIME,
-   `Max_Capacity` TIME,
    `Event_Location_Name` VARCHAR(255),
    `Event_Location_Address` VARCHAR(255),
-   `Dress_Code` VARCHAR(255),
    `Ticket_Cost` Decimal(10, 2),
-   `Minimum_Age_Requirement` INT, 
-   `Event_Type` VARCHAR(255),
-   `Event_Category` VARCHAR(255),
-   `Event_Activities` VARCHAR(255),
-   `Status`  CHAR(25),
-   PRIMARY KEY (`Event_id`),
-   KEY `Event_FK` (`Host_Contact_Information`),
-   CONSTRAINT `Event_FK` FOREIGN KEY (`Host_Contact_Information`) REFERENCES `User` (`email`)
+	PRIMARY KEY (`event_id`)
 );
+
  
 CREATE TABLE if not exists `db`.`Ticket`(
 	`Ticket_ID` BIGINT NOT NULL AUTO_INCREMENT UNIQUE,
