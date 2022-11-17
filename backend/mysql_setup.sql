@@ -8,7 +8,7 @@ USE db;
  
 -- create user table in db
 CREATE TABLE if not exists `db`.`User`(
-   `email` VARCHAR(255) NOT NULL,
+   `email` VARCHAR(255) NOT NULL UNIQUE,
    `name` VARCHAR(255),
    `dob` DATE,
    `password` VARCHAR(255) NOT NULL,
@@ -29,7 +29,7 @@ INTO TABLE User
 FIELDS TERMINATED BY ',';
 
 CREATE TABLE if not exists `db`.`Event`(
-   `Event_id` INT NOT NULL AUTO_INCREMENT,
+   `Event_id` INT NOT NULL AUTO_INCREMENT UNIQUE,
    `Event_name` VARCHAR(255) NOT NULL,
    `Event_description` TEXT,
    `Event_Image` BLOB,
@@ -50,18 +50,20 @@ CREATE TABLE if not exists `db`.`Event`(
    `Event_Category` VARCHAR(255),
    `Event_Activities` VARCHAR(255),
    `Status`  CHAR(25),
-	PRIMARY KEY (`event_id`)
+   PRIMARY KEY (`Event_id`),
+   KEY `Event_FK` (`Host_Contact_Information`),
+   CONSTRAINT `Event_FK` FOREIGN KEY (`Host_Contact_Information`) REFERENCES `User` (`email`)
 );
  
 CREATE TABLE if not exists `db`.`Ticket`(
-	`Ticket_ID` BIGINT NOT NULL AUTO_INCREMENT,
+	`Ticket_ID` BIGINT NOT NULL AUTO_INCREMENT UNIQUE,
 	`User_Email` VARCHAR(255) NOT NULL,
 	`Event_ID` BIGINT NOT NULL,
    PRIMARY KEY (`Ticket_ID`)
 );
 
 CREATE TABLE if not exists `db`.`Report`(
-	`Report_ID` BIGINT,
+	`Report_ID` BIGINT UNIQUE,
 	`Report_Type` CHAR(25),
 	`Report_Date` DATE,
 	`Report_Reason` VARCHAR(255),
@@ -71,13 +73,13 @@ CREATE TABLE if not exists `db`.`Report`(
    PRIMARY KEY (`Report_ID`)
 );
 CREATE TABLE if not exists `db`. `BannedIPs_Superlist`(
-   `IP_Address` NUMERIC,
+   `IP_Address` varchar(50) UNIQUE,
    `Report_ID` BIGINT,
    PRIMARY KEY (`IP_Address`)
 );
  
 CREATE TABLE if not exists `db`. `Business`(
-   `Business_ID` BIGINT,
+   `Business_ID` BIGINT UNIQUE,
    `Business_Name` VARCHAR(255),
    `Business_Location` VARCHAR(255),
    `Email` VARCHAR(255),
@@ -87,7 +89,7 @@ CREATE TABLE if not exists `db`. `Business`(
 );
 
 CREATE TABLE if not exists `db`. `Event_Request`(
-	`Request_ID`  BIGINT,
+	`Request_ID`  BIGINT UNIQUE,
 	`Business_ID` BIGINT,
 	`Host_ID` BIGINT,
 	`Description` TEXT,
