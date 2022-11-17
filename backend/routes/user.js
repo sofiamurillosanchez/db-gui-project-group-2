@@ -2,6 +2,20 @@ const express = require('express');
 const router = express.Router();
 
 //this is authenticated user
+    router.get('/authenticateUser', async (req, res, next) => {
+        try {
+            const body = req.body;
+            console.log(body);
+            console.log(req.models);
+            const result = await req.models.user.authenticateUser(body.email, body.password);
+            res.status(201).json(result);
+        } catch (err) {
+            console.error('Failed to load user:' , err);
+            res.status(500).json({ message: err.toString() });
+        }
+        next();
+    });
+
     router.get('/getByEmail', async (req, res, next) => {
     try {
         const body = req.body;
