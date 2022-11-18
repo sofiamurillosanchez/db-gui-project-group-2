@@ -53,6 +53,14 @@ const findTaggedUser = async (tagged_user) => {
       return result;
 }
 
+const updateUser = async (password, email, phone_number) => {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+      const query = knex(USER_TABLE).where({email}).update({password: hashedPassword, email, phone_number});
+      const result = await query;
+      return result;
+}
+
 const updatePassword = async (email, password) => {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
@@ -123,6 +131,7 @@ const authenticateUser = async (email, password) => {
     findUserByName,
     findUserByLocation,
     findUserByIP,
+    updateUser,
     updatePassword,
     updateCompany,
     updateRole,
