@@ -1,6 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
+    router.get('/', async (req, res, next) => {
+        try {
+            const body = req.body;
+            const result = await req.models.event.getAllEvents();
+            res.status(201).json(result);
+        } catch (err) {
+            console.error('Failed to load current events:' , err);
+            res.status(500).json({ message: err.toString() });
+        }
+    });
+    
     router.get('/getEvent', async (req, res, next) => {
         try {
             const body = req.body;
@@ -74,10 +85,9 @@ const router = express.Router();
             const body = req.body;
             console.log(body);
             console.log(req.models);
-            const result = await req.models.event.createNewEvent(body.Event_id, body.Event_name, body.Event_description, body.Event_Image, body.Host_Name, 
+            const result = await req.models.event.createNewEvent(body.Event_id, body.Event_name, body.Event_description, body.Host_Name, 
             body.Host_Contact_Information, body.Start_Date, body.End_Date, body.Start_Time, body.End_Time, body.Num_Expected_Attendees, body.Max_Capacity, 
-               body.Event_Location_Name, body.Event_Location_Address, body.Dress_Code, body.Ticket_Cost, body.Minimum_Age_Requirement,  body.Event_Type, body.Event_Category,
-               body.Event_Activities, body.Status);
+            body.Event_Location_Name, body.Event_Location_Address, body.Dress_Code, body.Ticket_Cost, body.Event_Type, body.Event_Category);
             res.status(201).json(result);
         } catch (err) {
             console.error('Failed to create new event:', err);
@@ -86,6 +96,22 @@ const router = express.Router();
         next();
         });
 
+    
+    router.post('/updateEvent', async (req, res, next) => {
+        try {
+            const body = req.body;
+            console.log(body);
+            console.log(req.models);
+            const result = await req.models.event.updateEvent(body.Event_name, body.Start_Date, body.End_Date, 
+                                                              body.Start_Time, body.End_Time, body.Event_Location_Name, body.Event_description);
+            res.status(201).json(result);
+        } catch (err) {
+            console.error('Failed to update event:', err);
+            res.status(500).json({ message: err.toString() });
+        }
+        next();
+    });
+                
     router.put('/setEventName', async (req, res, next) => {
         try {
             const body = req.body;
@@ -219,7 +245,7 @@ const router = express.Router();
             const body = req.body;
             console.log(body);
             console.log(req.models);
-            const result = await req.models.event.updateHostContactInfo(body.Event_id, body.Host_Contact_Information);
+            const result = await req.models.event.updateHostContactInfo(body.Event_id, body.Host_Name, body.Host_Contact_Information);
             res.status(201).json(result);
         } catch (err) {
             console.error('Failed to update host contact info:', err);
