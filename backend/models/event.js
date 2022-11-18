@@ -2,16 +2,21 @@ const knex = require('../database/knex');
 const bcrypt = require('bcrypt');
 const EVENT_TABLE = 'Event';
 
-const createNewEvent = async (Event_id, Event_name, Event_description, Event_Image, Host_Name, 
+const createNewEvent = async (Event_id, Event_name, Event_description, Host_Name, 
     Host_Contact_Information, Start_Date, End_Date, Start_Time, End_Time, Num_Expected_Attendees, Max_Capacity, 
-    Event_Location_Name, Event_Location_Address, Dress_Code, Ticket_Cost, Minimum_Age_Requirement,  Event_Type, Event_Category,
-    Event_Activities, Status) => {
+    Event_Location_Name, Event_Location_Address, Dress_Code, Ticket_Cost,  Event_Type, Event_Category) => {
 
-    const query = knex(EVENT_TABLE).insert({Event_id, Event_name, Event_description, Event_Image, Host_Name, 
+    const query = knex(EVENT_TABLE).insert({Event_id, Event_name, Event_description, Host_Name, 
         Host_Contact_Information, Start_Date, End_Date, Start_Time, End_Time, Num_Expected_Attendees, Max_Capacity, 
-        Event_Location_Name, Event_Location_Address, Dress_Code, Ticket_Cost, Minimum_Age_Requirement,  Event_Type, Event_Category,
-        Event_Activities, Status});
+        Event_Location_Name, Event_Location_Address, Dress_Code, Ticket_Cost,  Event_Type, Event_Category});
     console.log('Raw query for createNewEvent:', query.toString());
+    const result = await query;
+    return result;
+}
+
+const getAllEvents = async () => {
+    const query = knex(EVENT_TABLE).select();
+    console.log('Raw query for getAllEvents:', query.toString());
     const result = await query;
     return result;
 }
@@ -42,6 +47,12 @@ const findEventByCategory = async (Event_Category) => {
 
 const findEventByHost = async (Host_Name) => {
     const query = knex(EVENT_TABLE).where({Host_Name});
+    const result = await query;
+    return result;
+}
+
+const updateEvent = async (Event_id, Event_name, Start_Date, End_Date, Start_Time, End_Time, Event_Location_Name, Event_description) => {
+    const query = knex(EVENT_TABLE).where({Event_id}).update({Event_name, Start_Date, End_Date, Start_Time, End_Time, Event_Location_Name, Event_description});
     const result = await query;
     return result;
 }
@@ -94,8 +105,8 @@ const updateEventCost = async (Event_id, Ticket_Cost) => {
     return result;
 }
 
-const updateHostContactInfo = async (Event_id, Host_Contact_Information) => {
-    const query = knex(EVENT_TABLE).where({Event_id}).update({Host_Contact_Information});
+const updateHostContactInfo = async (Event_id, Host_Name, Host_Contact_Information) => {
+    const query = knex(EVENT_TABLE).where({Event_id}).update({Host_Name, Host_Contact_Information});
     const result = await query;
     return result;
 }
@@ -108,11 +119,13 @@ const deleteEvent = async (Event_id) => {
 
 module.exports = {
     createNewEvent,
+    getAllEvents,
     findEventByName,
     findEventByLocation,
     findEventByLocationandDate,
     findEventByCategory,
     findEventByHost,
+    updateEvent,
     updateEventName,
     updateEventImage,
     updateEventDescription,

@@ -15,6 +15,13 @@ const createNewUser = async (email, name, dob, password, company, phone_number, 
    return result;
 }
 
+const getAllUsers = async () => {
+      const query = knex(USER_TABLE).select();
+      console.log('Raw query for getAllUsers:', query.toString());
+      const result = await query;
+      return result;
+}
+
 const findUserByEmail = async (email) => {
       console.log(email);
     const query = knex(USER_TABLE).where({ email: email });
@@ -110,6 +117,7 @@ const authenticateUser = async (email, password) => {
 
  module.exports = {
     createNewUser,
+    getAllUsers,
     findUserByEmail,
     authenticateUser,
     findUserByName,
