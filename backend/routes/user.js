@@ -11,7 +11,7 @@ const router = express.Router();
             res.status(500).json({ message: err.toString() });
         }
     });
-    
+
     router.get('/authenticateUser', async (req, res, next) => {
         try {
             const body = req.body;
@@ -98,7 +98,21 @@ const router = express.Router();
         next();
     });
 
-    router.put('/setCompany', async (req, res, next) => {
+    router.post('/updateUser', async (req, res, next) => {
+        try {
+            const body = req.body;
+            console.log(body);
+            console.log(req.models);
+            const result = await req.models.user.updateUser(body.password, body.email, body.phone_number);
+            res.status(201).json(result);
+        } catch (err) {
+            console.error('Failed to update user:', err);
+            res.status(500).json({ message: err.toString() });
+        }
+        next();
+    });
+
+    router.put('/updateCompany', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
@@ -112,7 +126,7 @@ const router = express.Router();
         next();
     });
 
-    router.put('/setRole', async (req, res, next) => {
+    router.put('/updateRole', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
@@ -126,7 +140,7 @@ const router = express.Router();
         next();
     });
 
-    router.put('/setLocation', async (req, res, next) => {
+    router.put('/updateLocation', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
@@ -140,7 +154,7 @@ const router = express.Router();
         next();
     });
 
-    router.put('/setUsername', async (req, res, next) => {
+    router.put('/updateUsername', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
