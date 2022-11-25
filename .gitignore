@@ -1,3 +1,7 @@
 # Environment
 .env
 node_modules
+.DS_Store
+CLOUD_Sample_Docker-Compose_Project-main/frontend/src/.DS_Store~HEAD
+CLOUD_Sample_Docker-Compose_Project-main/.DS_Store
+CLOUD_Sample_Docker-Compose_Project-main/.DS_Store
