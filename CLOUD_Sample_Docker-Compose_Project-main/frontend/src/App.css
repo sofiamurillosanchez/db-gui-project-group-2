@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+.list-group-item{
+  border: black;
+  border-style: outset;
+  margin: 10px;
+}
+.list-group-item h2{
+  text-align: left;
+}
+.Event-Scroller{
+  overflow: auto;
+  border-style: dashed;
+  height: 500px;
+}

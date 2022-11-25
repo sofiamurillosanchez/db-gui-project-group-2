@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
-
+import { UserProfile} from "./components";
+import { ActiveEventList } from './components/domain';
+import { User, Event } from './models';
 // React functional component
 function App () {
   // state for storage of the information on the webpage of forms and list, uses hooks
@@ -67,7 +69,21 @@ function App () {
     fetchVals();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
+  //event_name, event_date, event_time, event_location, event_description
+const event1 = new Event("world cup party", "may 1st 2001", "9:00", "rafe's house", "super fun world cup watch party");
+const event2 = new Event("Birthday party", "November 20th 2000", "11:00", "joe's house", "Joe's birthday party");
+const event3 = new Event("Birthday party", "November 20th 2000", "11:00", "joe's house", "Joe's birthday party");
+const event4 = new Event("Birthday party", "November 20th 2000", "11:00", "joe's house", "Joe's birthday party");
+const event5 = new Event("Birthday party", "November 20th 2000", "11:00", "joe's house", "Joe's birthday party");
+const event6 = new Event("Birthday party", "November 20th 2000", "11:00", "joe's house", "Joe's birthday party");
+var eventList = [];
+eventList.push(event1);
+eventList.push(event2);
+eventList.push(event3);
+eventList.push(event4);
+eventList.push(event5);
+eventList.push(event6);
+const userTest = new User("rafef","password","rafe@icloud.com","7185551923", "admin");
   return (
     <div className="App">
       <header className="App-header">
@@ -82,6 +98,8 @@ function App () {
           { values.map((value, i) => <li key={i}>{value.value}</li>) }
         </ul>
       </header>
+      <UserProfile title="user-prof" user={userTest}> </UserProfile>
+      <ActiveEventList events={eventList}></ActiveEventList>
     </div>
   );
 }
