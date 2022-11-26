@@ -1,9 +1,36 @@
 const express = require('express');
 const router = express.Router();
+
 //this is authenticated user
+    router.get('/', async (req, res, next) => {
+        try {
+            const result = await req.models.user.getAllUsers();
+            res.status(201).json(result);
+        } catch (err) {
+            console.error('Failed to load current user:' , err);
+            res.status(500).json({ message: err.toString() });
+        }
+    });
+
+    router.get('/authenticateUser', async (req, res, next) => {
+        try {
+            const body = req.body;
+            console.log(body);
+            console.log(req.models);
+            const result = await req.models.user.authenticateUser(body.email, body.password);
+            res.status(201).json(result);
+        } catch (err) {
+            console.error('Failed to load user:' , err);
+            res.status(500).json({ message: err.toString() });
+        }
+        next();
+    });
+
     router.get('/getByEmail', async (req, res, next) => {
     try {
-        const result = await req.models.user.findUserByEmail(req.body.email);
+        const body = req.body;
+        console.log(body);
+        const result = await req.models.user.findUserByEmail(body.email);
         res.status(201).json(result);
     } catch (err) {
         console.error('Failed to load current user:' , err);
@@ -13,7 +40,8 @@ const router = express.Router();
 
     router.get('/getByName', async (req, res, next) => {
         try {
-            const result = await req.models.user.findUserByName(req.body.name);
+            const body = req.body;
+            const result = await req.models.user.findUserByName(body.name);
             res.status(201).json(result);
         } catch (err) {
             console.error('Failed to load current user:' , err);
@@ -23,7 +51,8 @@ const router = express.Router();
 
     router.get('/getByLocation', async (req, res, next) => {
         try {
-            const result = await req.models.user.findUserByLocation(req.body.location);
+            const body = req.body;
+            const result = await req.models.user.findUserByLocation(body.location);
             res.status(201).json(result);
         } catch (err) {
             console.error('Failed to load current user:' , err);
@@ -33,7 +62,19 @@ const router = express.Router();
 
     router.get('/getByIP', async (req, res, next) => {
         try {
-            const result = await req.models.user.findUserByIP(req.body.c);
+            const body = req.body;
+            const result = await req.models.user.findUserByIP(body.ip_address);
+            res.status(201).json(result);
+        } catch (err) {
+            console.error('Failed to load current user:' , err);
+            res.status(500).json({ message: err.toString() });
+        }
+    });
+
+    router.get('/getTaggedUser', async (req, res, next) => {
+        try {
+            const body = req.body;
+            const result = await req.models.user.findTaggedUser(body.tagged_user);
             res.status(201).json(result);
         } catch (err) {
             console.error('Failed to load current user:' , err);
@@ -46,7 +87,9 @@ const router = express.Router();
             const body = req.body;
             console.log(body);
             console.log(req.models);
-            const result = await req.models.user.createNewUser(body.email, body.password);
+            const result = await req.models.user.createNewUser(body.email, body.name, body.dob, body.password, 
+                                                               body.company, body.phone_number, body.role, body.location, 
+                                                               body.zip_code, body.ip_address, body.tagged_user);
             res.status(201).json(result);
         } catch (err) {
             console.error('Failed to create new user:', err);
@@ -55,7 +98,21 @@ const router = express.Router();
         next();
     });
 
-    router.put('/setCompany', async (req, res, next) => {
+    router.post('/updateUser', async (req, res, next) => {
+        try {
+            const body = req.body;
+            console.log(body);
+            console.log(req.models);
+            const result = await req.models.user.updateUser(body.password, body.email, body.phone_number);
+            res.status(201).json(result);
+        } catch (err) {
+            console.error('Failed to update user:', err);
+            res.status(500).json({ message: err.toString() });
+        }
+        next();
+    });
+
+    router.put('/updateCompany', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
@@ -69,7 +126,7 @@ const router = express.Router();
         next();
     });
 
-    router.put('/setRole', async (req, res, next) => {
+    router.put('/updateRole', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
@@ -83,7 +140,7 @@ const router = express.Router();
         next();
     });
 
-    router.put('/setLocation', async (req, res, next) => {
+    router.put('/updateLocation', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
@@ -97,7 +154,7 @@ const router = express.Router();
         next();
     });
 
-    router.put('/setUsername', async (req, res, next) => {
+    router.put('/updateUsername', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);

@@ -3,3 +3,4 @@
 node_modules
 CLOUD_Sample_Docker-Compose_Project-main/frontend/react-app/.DS_Store
 key-pair.pem
+knexfile.js
