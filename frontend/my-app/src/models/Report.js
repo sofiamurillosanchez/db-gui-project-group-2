@@ -1,8 +1,10 @@
 export class Report {
 
-    constructor(event_name, report_description, found_result){
-        this.event_name = event_name;
-        this.report_description = report_description;
-        this.found_result = found_result;
+    constructor(report_ID, report_type, report_date, report_reason, entity_reported_ID){
+        this.report_ID = report_ID;
+        this.report_type =report_type;
+        this.report_date =report_date;
+        this.report_reason =report_reason;
+        this.entity_reported_ID =entity_reported_ID;
     }
 }
