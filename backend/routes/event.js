@@ -126,19 +126,19 @@ const router = express.Router();
         next();
     });
 
-    router.put('/setImageUrl', async (req, res, next) => {
-        try {
-            const body = req.body;
-            console.log(body);
-            console.log(req.models);
-            const result = await req.models.event.setImageUrl(body.Event_id, body.Event_Image);
-            res.status(201).json(result);
-        } catch (err) {
-            console.error('Failed to set image url:', err);
-            res.status(500).json({ message: err.toString() });
-        }
-        next(); 
-    });
+    //router.put('/setImageUrl', async (req, res, next) => {
+      //  try {
+        //    const body = req.body;
+          //  console.log(body);
+            //console.log(req.models);
+           // const result = await req.models.event.setImageUrl(body.Event_id, body.Event_Image);
+           // res.status(201).json(result);
+      //  } catch (err) {
+   //         console.error('Failed to set image url:', err);
+  //          res.status(500).json({ message: err.toString() });
+//        }
+   //     next(); 
+//    });
 
     router.put('/setDescription', async (req, res, next) => {
         try {
