@@ -20,7 +20,7 @@ CREATE TABLE if not exists `db`.`User`(
    `ip_address` VARCHAR(50) UNIQUE,
    `tagged_user` BOOLEAN,
    `is_host` BOOLEAN,
-   `User_ID` int DEFAULT NULL, 
+   `User_ID` int DEFAULT NULL UNIQUE, 
    PRIMARY KEY (`email`)
 );
 
@@ -56,8 +56,10 @@ CREATE TABLE `Event` (
 CREATE TABLE if not exists `db`.`Ticket`(
 	`Ticket_ID` BIGINT NOT NULL AUTO_INCREMENT UNIQUE,
 	`User_Email` VARCHAR(255) NOT NULL,
-	`Event_ID` BIGINT NOT NULL,
-   PRIMARY KEY (`Ticket_ID`)
+	`Event_ID` INT NOT NULL,
+   	PRIMARY KEY (`Ticket_ID`),
+	CONSTRAINT `Ticket_FK` FOREIGN KEY (`Event_ID`) REFERENCES `Event` (`Event_id`),
+   	CONSTRAINT `Ticket_FK1` FOREIGN KEY (`User_Email`) REFERENCES `User` (`email`)
 );
 
 CREATE TABLE if not exists `db`.`Report`(
@@ -73,7 +75,9 @@ CREATE TABLE if not exists `db`.`Report`(
 CREATE TABLE if not exists `db`. `BannedIPs_Superlist`(
    `IP_Address` varchar(50) UNIQUE,
    `Report_ID` BIGINT,
-   PRIMARY KEY (`IP_Address`)
+   PRIMARY KEY (`IP_Address`),
+   CONSTRAINT `BannedIPs_Superlist_FK` FOREIGN KEY (`IP_Address`) REFERENCES `User` (`ip_address`),
+   CONSTRAINT `BannedIPs_Superlist_FK1` FOREIGN KEY (`Report_ID`) REFERENCES `Report` (`Report_ID`)
 );
  
 CREATE TABLE if not exists `db`. `Business`(
@@ -91,7 +95,9 @@ CREATE TABLE if not exists `db`. `Event_Request`(
 	`Business_ID` BIGINT,
 	`Host_ID` BIGINT,
 	`Description` TEXT,
-   PRIMARY KEY (`Request_ID`)
+   	PRIMARY KEY (`Request_ID`),
+	CONSTRAINT `Event_Request_FK` FOREIGN KEY (`Business_ID`) REFERENCES `User` (`Business_ID`),
+   	CONSTRAINT `Event_Request_FK1` FOREIGN KEY (`Host_ID`) REFERENCES `User` (`User_ID`)
 );
 
 
