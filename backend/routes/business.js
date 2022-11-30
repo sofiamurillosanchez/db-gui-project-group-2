@@ -14,6 +14,16 @@ router.post('/createBusiness', async (req, res, next) => {
     }
 });
 
+router.get('/', async (req, res, next) => {
+    try {
+        const result = await req.models.business.getAllBusinesses();
+        res.status(200).json(result);
+    } catch (err) {
+        console.error('Failed to get all businesses:' , err);
+        res.status(500).json({ message: err.toString() });
+    }
+});
+
 router.get('/getByID', async (req, res, next) => {
     try {
         const body = req.body;

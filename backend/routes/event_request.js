@@ -13,7 +13,17 @@ router.post('/createEvent_Request', async (req, res, next) => {
     }
 });
 
-router.get('/getEvent_RequestByID', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
+    try {
+        const result = await req.models.event_request.getAllEvent_Requests();
+        res.status(200).json(result);
+    } catch (err) {
+        console.error('Failed to get all event requests:' , err);
+        res.status(500).json({ message: err.toString() });
+    }
+});
+
+router.get('/getByID', async (req, res, next) => {
     try {
         const body = req.body;
         const result = await req.models.event_request.findEvent_RequestByID(body.Request_ID);
@@ -24,7 +34,7 @@ router.get('/getEvent_RequestByID', async (req, res, next) => {
     }
 });
 
-router.get('/getEvent_RequestByBusinessID', async (req, res, next) => {
+router.get('/getByBusinessID', async (req, res, next) => {
     try {
         const body = req.body;
         const result = await req.models.event_request.findEvent_RequestByBusinessID(body.Business_ID);
@@ -35,7 +45,7 @@ router.get('/getEvent_RequestByBusinessID', async (req, res, next) => {
     }
 });
 
-router.get('/getEvent_RequestByHostID', async (req, res, next) => {
+router.get('/getByHostID', async (req, res, next) => {
     try {
         const body = req.body;
         const result = await req.models.event_request.findEvent_RequestByHostID(body.Host_ID);
@@ -57,7 +67,7 @@ router.put('/updateDescription', async (req, res, next) => {
     }
 });
 
-router.delete('/deleteEvent_Request', async (req, res, next) => {
+router.delete('/deleteRequest', async (req, res, next) => {
     try {
         const body = req.body;
         const result = await req.models.event_request.deleteEvent_Request(body.Request_ID);

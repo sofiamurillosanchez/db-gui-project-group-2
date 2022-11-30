@@ -1,10 +1,3 @@
-//`IP_Address` NUMERIC,
-//`Report_ID` BIGINT,
-//PRIMARY KEY (`IP_Address`)
-
-
-//REMEMBER: This is the ROUTE FILE!!!
-
 const express = require('express');
 const router = express.Router();
 
@@ -39,10 +32,10 @@ router.get('/getByReport_ID', async (req, res, next) =>{
 });
 
 
-router.post('/addingtobanlist', async (req, res, next) =>{
+router.get('/addToBanList', async (req, res, next) =>{
     try {
         const body = req.body;
-        const result = await req.models.BannedIPs_Superlist.addingtobanlist(body.IP_Address, body.Report_ID);
+        const result = await req.models.BannedIPs_Superlist.addToBanList(body.IP_Address, body.Report_ID);
         res.status(201).json(result);
     } catch (err) {
         console.error('Failed to Add IP Address:' , err);
@@ -50,10 +43,10 @@ router.post('/addingtobanlist', async (req, res, next) =>{
     }
 });
 
-router.delete('/removefrombanlist', async (req, res, next) =>{ //Do I use 'delete' word for method in this situation?
+router.delete('/removeFromBanList', async (req, res, next) =>{
     try {
         const body = req.body;
-        const result = await req.models.BannedIPs_Superlist.removefrombanlist(body.IP_Address, body.Report_ID);
+        const result = await req.models.BannedIPs_Superlist.removeFromBanList(body.IP_Address);
         res.status(201).json(result);
     } catch (err) {
         console.error('Failed to Remove from ban list IP Address:' , err);
@@ -62,10 +55,10 @@ router.delete('/removefrombanlist', async (req, res, next) =>{ //Do I use 'delet
 });
 
 
-router.put('/updateipaddress', async (req, res, next) => {
+router.put('/updateIP_Address', async (req, res, next) => {
     try {
         const body = req.body;
-        const result = await req.models.BannedIPs_Superlist.updateipaddress(body.IP_Address);
+        const result = await req.models.BannedIPs_Superlist.updateIP_Address(body.IP_Address);
         res.status(201).json(result);
     } catch (err) 
     {
@@ -86,13 +79,4 @@ router.get('/determineloc', async (req, res, next) => {
 })
 
 
-
-
-
-
-
-
-
 module.exports=router;
-
-

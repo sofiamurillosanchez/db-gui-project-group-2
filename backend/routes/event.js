@@ -112,7 +112,7 @@ const router = express.Router();
         next();
     });
                 
-    router.put('/setEventName', async (req, res, next) => {
+    router.put('/updateEventName', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
@@ -126,21 +126,21 @@ const router = express.Router();
         next();
     });
 
-    //router.put('/setImageUrl', async (req, res, next) => {
-      //  try {
-        //    const body = req.body;
-          //  console.log(body);
-            //console.log(req.models);
-           // const result = await req.models.event.setImageUrl(body.Event_id, body.Event_Image);
-           // res.status(201).json(result);
-      //  } catch (err) {
-   //         console.error('Failed to set image url:', err);
-  //          res.status(500).json({ message: err.toString() });
-//        }
-   //     next(); 
-//    });
+    // router.put('/setImageUrl', async (req, res, next) => {
+    //     try {
+    //         const body = req.body;
+    //         console.log(body);
+    //         console.log(req.models);
+    //         const result = await req.models.event.setImageUrl(body.Event_id, body.Event_Image);
+    //         res.status(201).json(result);
+    //     } catch (err) {
+    //         console.error('Failed to set image url:', err);
+    //         res.status(500).json({ message: err.toString() });
+    //     }
+    //     next(); 
+    // });
 
-    router.put('/setDescription', async (req, res, next) => {
+    router.put('/updateDescription', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
@@ -155,7 +155,7 @@ const router = express.Router();
     });
 
 
-    router.put('/setDate', async (req, res, next) => {
+    router.put('/updateDate', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
@@ -169,7 +169,7 @@ const router = express.Router();
         next();
     });
 
-    router.put('/setTime', async (req, res, next) => {
+    router.put('/updateTime', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
@@ -183,7 +183,7 @@ const router = express.Router();
         next();
     });
  
-    router.put('/setCapacity', async (req, res, next) => {
+    router.put('/updateCapacity', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
@@ -198,7 +198,7 @@ const router = express.Router();
     });
 
 
-    router.put('/setLocation', async (req, res, next) => {
+    router.put('/updateLocation', async (req, res, next) => {
     try {
         const body = req.body;
         console.log(body);
@@ -212,7 +212,7 @@ const router = express.Router();
     next();
     });
 
-    router.put('/setCost', async (req, res, next) => {
+    router.put('/updateCost', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
@@ -226,7 +226,7 @@ const router = express.Router();
         next();
     });
 
-    router.put('/setEventCategory', async (req, res, next) => {
+    router.put('/updateEventCategory', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
@@ -240,7 +240,7 @@ const router = express.Router();
         next();
     });
 
-    router.put('/setHostContactInfo', async (req, res, next) => {
+    router.put('/updateHostContactInfo', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
