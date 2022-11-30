@@ -63,7 +63,7 @@ CREATE TABLE if not exists `db`.`Ticket`(
 );
 
 CREATE TABLE if not exists `db`.`Report`(
-	`Report_ID` BIGINT UNIQUE,
+	`Report_ID` BIGINT UNIQUE AUTO_INCREMENT,
 	`Report_Type` CHAR(25),
 	`Report_Date` DATE,
 	`Report_Reason` VARCHAR(255),
@@ -81,7 +81,7 @@ CREATE TABLE if not exists `db`. `BannedIPs_Superlist`(
 );
  
 CREATE TABLE if not exists `db`. `Business`(
-   `Business_ID` BIGINT UNIQUE,
+   `Business_ID` BIGINT UNIQUE AUTO_INCREMENT,
    `Business_Name` VARCHAR(255),
    `Business_Location` VARCHAR(255),
    `Email` VARCHAR(255),
@@ -91,7 +91,7 @@ CREATE TABLE if not exists `db`. `Business`(
 );
 
 CREATE TABLE if not exists `db`. `Event_Request`(
-	`Request_ID`  BIGINT UNIQUE,
+	`Request_ID`  BIGINT UNIQUE AUTO_INCREMENT,
 	`Business_ID` BIGINT,
 	`Host_ID` BIGINT,
 	`Description` TEXT,
