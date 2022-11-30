@@ -39,7 +39,7 @@ router.get('/getByReport_ID', async (req, res, next) =>{
 });
 
 
-router.get('/addingtobanlist', async (req, res, next) =>{
+router.post('/addingtobanlist', async (req, res, next) =>{
     try {
         const body = req.body;
         const result = await req.models.BannedIPs_Superlist.addingtobanlist(body.IP_Address, body.Report_ID);
