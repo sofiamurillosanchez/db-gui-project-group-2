@@ -28,7 +28,7 @@ export const EditEventForm = ({}) => {
             <TextAreaField label="NewEventDescription"
                             value={ newEventDescription }
                             setValue={ setNewEventDescription }/>
-            <button type="button"
+            {/* <button type="button"
                     onClick={ () => {
                         // onReviewAdded()
                         setEventName('');
@@ -38,7 +38,7 @@ export const EditEventForm = ({}) => {
                         setEventDescription('');
                     }
                 }>Update
-            </button>
+            </button> */}
         </div>
     </>
 }

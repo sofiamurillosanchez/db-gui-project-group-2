@@ -2,7 +2,8 @@ import logo from './logo.svg';
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
-
+import {HomePage, SignUpPage, ProfilePage, EditProfileForm, EventReportForm, EventHostPage, EventReportPage, EditPreviousEvent} from "./components/";
+//import { HomePage } from './components';
 // React functional component
 function App () {
   // state for storage of the information on the webpage of forms and list, uses hooks
@@ -83,6 +84,20 @@ function App () {
           { values.map((value, i) => <li key={i}>{value.value}</li>) }
         </ul>
       </header>
+      <HomePage></HomePage>
+      <hr></hr>
+      <SignUpPage></SignUpPage>
+      <hr></hr>
+      <ProfilePage></ProfilePage>
+      <hr></hr>
+      <EditProfileForm></EditProfileForm>
+      <hr></hr>
+      <EventHostPage></EventHostPage>
+      <hr></hr>
+      <EventReportPage></EventReportPage>
+      <hr></hr>
+      <EditPreviousEvent></EditPreviousEvent>
+      <hr></hr>
     </div>
   );
 }

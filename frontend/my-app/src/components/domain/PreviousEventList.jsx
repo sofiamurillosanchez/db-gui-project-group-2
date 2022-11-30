@@ -1,4 +1,10 @@
-export const PreviousEventList = ({events}) =>
+export const PreviousEventList = ({events}) => {
+    if(!events){
+        return <>
+        <h1>No found events</h1>
+        </>
+    }
+    return<>
     <div className="Event-Scroller">
         <ul className="list-group mt-4 mb-4" style={{listStyleType: "none"}}>
             {
@@ -21,5 +27,7 @@ export const PreviousEventList = ({events}) =>
             }
         </ul>
 
-    </div>;
+    </div>
+    </>;
+}
     //event_name, event_date, event_time, event_location, event_description
