@@ -1,11 +1,19 @@
 const knex = require('../database/knex');
 const bcrypt = require('bcrypt');
+const router = require('../routes/event_request');
 const EVENT_REQUEST_TABLE = 'Event_Request';
 
 //probbaly need to add date and time for this in the table
 const createEventRequest = async (Request_ID, Business_ID, Host_ID, Description) => {
     const query = knex(EVENT_REQUEST_TABLE).insert({Request_ID, Business_ID, Host_ID, Description});
     console.log('Raw query for createEventRequest:', query.toString());
+    const result = await query;
+    return result;
+}
+
+const getAllEventRequests = async () => {
+    const query = knex(EVENT_REQUEST_TABLE).select();
+    console.log('Raw query for getAllEventRequests:', query.toString());
     const result = await query;
     return result;
 }
@@ -47,6 +55,7 @@ const deleteEventRequest = async (Request_ID) => {
 
 module.exports = {
     createEventRequest,
+    getAllEventRequests,
     findEventRequestByID,
     findEventRequestByBusinessID,
     findEventRequestByHostID,

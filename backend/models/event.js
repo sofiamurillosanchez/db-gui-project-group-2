@@ -63,11 +63,11 @@ const updateEventName = async (Event_id, Event_name) => {
     return result;
 }
 
-const updateEventImage = async (Event_id, Event_Image) => {
-    const query = knex(EVENT_TABLE).where({Event_id}).update({Event_Image});
-    const result = await query;
-    return result;
-}
+// const updateEventImage = async (Event_id, Event_Image) => {
+//     const query = knex(EVENT_TABLE).where({Event_id}).update({Event_Image});
+//     const result = await query;
+//     return result;
+// }
 
 const updateEventDescription = async (Event_id, Event_description) => {
     const query = knex(EVENT_TABLE).where({Event_id}).update({Event_description});
@@ -127,7 +127,7 @@ module.exports = {
     findEventByHost,
     updateEvent,
     updateEventName,
-    updateEventImage,
+    //updateEventImage,
     updateEventDescription,
     updateEventDate,
     updateEventTime,

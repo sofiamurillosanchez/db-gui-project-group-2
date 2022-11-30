@@ -9,6 +9,13 @@ const createBusiness = async (Business_ID, Business_Name, Business_Location, Ema
     return result;
 }
 
+const getAllBusinesses = async () => {
+    const query = knex(BUSINESS_TABLE).select();
+    console.log('Raw query for getAllBusinesses:', query.toString());
+    const result = await query;
+    return result;
+}
+
 const findBusinessByID = async (Business_ID) => {
     const query = knex(BUSINESS_TABLE).where({ Business_ID });
     const result = await query;
@@ -71,6 +78,7 @@ const deleteBusiness = async (Business_ID) => {
 
 module.exports = {
     createBusiness,
+    getAllBusinesses,
     findBusinessByID,
     findBusinessByName,
     findBusinessByLocation,

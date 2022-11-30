@@ -9,6 +9,13 @@ const createNewTicket = async (Ticket_ID, User_Email, Event_ID) => {
     return result;
 }
 
+const getAllTickets = async () => {
+    const query = knex(TICKET_TABLE).select();
+    console.log('Raw query for getAllTickets:', query.toString());
+    const result = await query;
+    return result;
+}
+
 const findTicketByID = async (Ticket_ID) => {
     const query = knex(TICKET_TABLE).where({Ticket_ID});
     console.log('Raw query for findTicketByID:', query.toString());
@@ -39,6 +46,7 @@ const deleteTicket = async (Ticket_ID) => {
 
 module.exports = {
     createNewTicket,
+    getAllTickets,
     findTicketByID,
     findTicketByUserEmail,
     findTicketByEventID,

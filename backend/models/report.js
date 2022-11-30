@@ -10,6 +10,13 @@ const createReport = async(Report_ID, Report_Type, Report_Date, Report_Reason, S
     return result;
 }
 
+const getAllReports = async () => {
+    const query = knex(REPORT_TABLE).select();
+    console.log('Raw query for getAllReports:', query.toString());
+    const result = await query;
+    return result;
+}
+
 const findReportByReportID = async (Report_ID) => {
     const query = knex(REPORT_TABLE).where({Report_ID});
     const result = await query;
@@ -54,6 +61,7 @@ const deleteReport = async (Report_ID) => {
 
 module.exports = {
     createReport,
+    getAllReports,
     findReportByReportID,
     findReportByReportType,
     findReportByReportDate,
