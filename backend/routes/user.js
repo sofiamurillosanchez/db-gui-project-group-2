@@ -98,7 +98,7 @@ const router = express.Router();
         next();
     });
 
-    router.post('/updateUser', async (req, res, next) => {
+    router.put('/updateUser', async (req, res, next) => {
         try {
             const body = req.body;
             console.log(body);
