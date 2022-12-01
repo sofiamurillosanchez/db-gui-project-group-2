@@ -3,7 +3,7 @@ import './App.css';
 import axios from 'axios';
 import { AppProvider } from './AppContext';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { LogInForm, Router } from './components';
+import { LogInForm} from './components';
 import {HomePage, SignUpPage, ProfilePage, EditProfileForm, EventReportForm, EventHostPage, EventReportPage, EditPreviousEvent} from "./components/";
 //import { HomePage } from './components';
 // React functional component
