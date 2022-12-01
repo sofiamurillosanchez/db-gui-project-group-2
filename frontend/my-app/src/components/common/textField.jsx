@@ -9,5 +9,3 @@ export const TextField = ({ label, value, setValue }) => <>
             onChange={event => setValue(event.target.value)} />
     </div>
 </>;
-
-export default TextField;

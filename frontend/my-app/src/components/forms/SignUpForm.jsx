@@ -7,7 +7,7 @@ export const SignUpForm = ({}) => {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-    const [phoneNumber, setPhoneNumber] = usetState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
 
     return <>
         <div>

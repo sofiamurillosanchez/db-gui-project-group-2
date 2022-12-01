@@ -11,5 +11,3 @@ export const TextAreaField = ({ label, value, setValue }) => <>
 </>;
 
 export default TextAreaField;
-
-

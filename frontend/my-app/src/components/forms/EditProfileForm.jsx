@@ -7,7 +7,7 @@ export const EditProfileForm = ({}) => {
     const [newUserName, setNewUserName] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [newEmail, setNewEmail] = useState('');
-    const [newPhoneNumber, setNewPhoneNumber] = usetState('');
+    const [newPhoneNumber, setNewPhoneNumber] = useState('');
 
     return <>
         <div>
@@ -23,7 +23,7 @@ export const EditProfileForm = ({}) => {
             <TextField label="NewPhoneNumber"
                         value={ newPhoneNumber }
                         setValue={ setNewPhoneNumber } />
-            <button type="button"
+            {/* <button type="button"
                     onClick={ () => {
                         // onReviewAdded()
                         setUserName('');
@@ -32,7 +32,7 @@ export const EditProfileForm = ({}) => {
                         setPhoneNumber('');
                     }
                 }>Update
-            </button>
+            </button> */}
         </div>
     </>
 
