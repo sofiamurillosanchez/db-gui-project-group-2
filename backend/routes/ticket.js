@@ -12,6 +12,16 @@ router.post('/createTicket', async (req, res, next) => {
     }
 });
 
+router.get('/', async (req, res, next) => {
+    try {
+        const result = await req.models.ticket.getAllTickets();
+        res.status(200).json(result);
+    } catch (err) {
+        console.error('Failed to get all tickets:' , err);
+        res.status(500).json({ message: err.toString() });
+    }
+});
+
 router.get('/getByTicketID', async (req, res, next) => {
     try {
         const body = req.body;
