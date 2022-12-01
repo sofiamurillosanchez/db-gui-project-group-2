@@ -37,7 +37,7 @@ router.get('/getByID', async (req, res, next) => {
 router.get('/getByBusinessID', async (req, res, next) => {
     try {
         const body = req.body;
-        const result = await req.models.event_request.findEvent_RequestByBusinessID(body.Business_ID);
+        const result = await req.models.event_request.findEventRequestByBusinessID(body.Business_ID);
         res.status(201).json(result);
     } catch (err) {
         console.error('Failed to load current event request:' , err);
@@ -48,7 +48,7 @@ router.get('/getByBusinessID', async (req, res, next) => {
 router.get('/getByHostID', async (req, res, next) => {
     try {
         const body = req.body;
-        const result = await req.models.event_request.findEvent_RequestByHostID(body.Host_ID);
+        const result = await req.models.event_request.findEventRequestByHostID(body.Host_ID);
         res.status(201).json(result);
     } catch (err) {
         console.error('Failed to load current event request:' , err);
