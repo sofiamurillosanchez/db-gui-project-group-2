@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
 import { AppProvider } from './AppContext';
-import { Router } from './components';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { LogInForm, Router } from './components';
 import {HomePage, SignUpPage, ProfilePage, EditProfileForm, EventReportForm, EventHostPage, EventReportPage, EditPreviousEvent} from "./components/";
 //import { HomePage } from './components';
 // React functional component
@@ -72,37 +73,18 @@ function App () {
   }, [])
 
   return (
-    <AppProvider>
-    <Router />
-    </AppProvider>
-    // <div className="App">
-    //   <header className="App-header">
-    //     <button onClick={fetchBase} style={{marginBottom: '1rem'}}> {`GET: http://${url}:8000/`} </button>
-    //     <button onClick={reset}> Reset DB </button>
-    //     <form onSubmit={handleSubmit}>
-    //       <input type="text" value={number} onChange={handleChange}/>
-    //       <br/>
-    //       <input type="submit" value="Submit" />
-    //     </form>
-    //     <ul>
-    //       { values.map((value, i) => <li key={i}>{value.value}</li>) }
-    //     </ul>
-    //   </header>
-    //   <HomePage></HomePage>
-    //   <hr></hr>
-    //   <SignUpPage></SignUpPage>
-    //   <hr></hr>
-    //   <ProfilePage></ProfilePage>
-    //   <hr></hr>
-    //   <EditProfileForm></EditProfileForm>
-    //   <hr></hr>
-    //   <EventHostPage></EventHostPage>
-    //   <hr></hr>
-    //   <EventReportPage></EventReportPage>
-    //   <hr></hr>
-    //   <EditPreviousEvent></EditPreviousEvent>
-    //   <hr></hr>
-    // </div>
+
+    <div className="App">
+      <Router>
+      <Switch>
+        <Route exact path='/'><HomePage/></Route>
+        <Route path='/home'><HomePage /></Route>
+        <Route path='/login'><LogInForm /></Route>
+        <Route path='/sign'><SignUpPage /></Route>
+        <Route path='/profile'><ProfilePage /></Route>
+      </Switch>
+      </Router>
+    </div>
   );
 }
 
