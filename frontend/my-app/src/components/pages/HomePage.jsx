@@ -1,6 +1,19 @@
-export const HomePage = () => 
-<>
+import { useNavigate, useParams } from "react-router-dom";
+import { AdminToolsPage } from "./AdminToolsPage";
+export const HomePage = () => {
+    // useEffect(() => {
+    //     if (params.accountID) {
+    //         getAccount(params.accountID).then(x => setAccount(x));
+    //     } else {
+    //         setAccount({ phoneNumbers: []});
+    //     }
+    // }, []);
+    const params = useParams();
+    const navigate = useNavigate();
+return <>
     <div className="homepage-container">
+        {}
+        <h1>Hello {params.userID} </h1>
         <div className="navbar-container">
             <div className="button-container">
                 <button className="sign-up-link">
@@ -20,24 +33,32 @@ export const HomePage = () =>
                 <tr>
                     <td>
                         <div className="admin-tools-link">
-                            <h1>Admin Tools</h1>
+                        <button
+                        onClick={navigate('AdminTools')}
+                        ><h1>Admin Tools</h1></button>
                         </div>
                     </td>
                     <td>
                         <div className="event-tools-link">
-                            <h1>Event Tools</h1>
+                        <button
+                        onClick={navigate('EventTools')}
+                        ><h1>Event Tools</h1></button>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div className="event-host-link">
-                            <h1>Event Host</h1>
+                        <button
+                        onClick={navigate('EventHost')}
+                        ><h1>Event Host</h1></button>
                         </div>
                     </td>
                     <td>
                         <div className="my-profile-link">
-                            <h1>My Profile</h1>
+                            <button
+                            onClick={navigate('ProfilePage')}
+                            ><h1>My Profile</h1></button>
                         </div>
                     </td>
                 </tr>
@@ -47,7 +68,7 @@ export const HomePage = () =>
 
 
 </>
-
+}
 /*
 Button to Sign Up page
 Button to Sign In page
