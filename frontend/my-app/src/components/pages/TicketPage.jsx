@@ -1,4 +1,4 @@
-import { RSVPForm } from "../forms";
+import { RSVPForm } from "../forms/RSVPForm";
 
 export const TicketPage = () => {
     return <>

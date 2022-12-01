@@ -1,4 +1,4 @@
-import { LogInForm } from "../forms";
+import { LogInForm } from "../forms/LogInForm";
 
 export const LogInPage = () => {
     return <>
