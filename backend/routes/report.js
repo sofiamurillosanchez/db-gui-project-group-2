@@ -12,6 +12,16 @@ router.post('/createReport', async (req, res, next) => {
     }
 });
 
+router.get('/', async (req, res, next) => {
+    try {
+        const result = await req.models.report.getAllReports();
+        res.status(200).json(result);
+    } catch (err) {
+        console.error('Failed to get all reports:' , err);
+        res.status(500).json({ message: err.toString() });
+    }
+});
+
 router.get('/getReportByID', async (req, res, next) => {
     try {
         const body = req.body;
@@ -63,6 +73,17 @@ router.put('/updateReportAddressed', async (req, res, next) => {
         res.status(201).json(result);
     } catch (err) {
         console.error('Failed to update report:' , err);
+        res.status(500).json({ message: err.toString() });
+    }
+});
+
+router.delete('/deleteReport', async (req, res, next) => {
+    try {
+        const body = req.body;
+        const result = await req.models.report.deleteReport(body.Report_ID);
+        res.status(201).json(result);
+    } catch (err) {
+        console.error('Failed to delete report:' , err);
         res.status(500).json({ message: err.toString() });
     }
 });
